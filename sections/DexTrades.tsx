@@ -134,7 +134,7 @@ const DexTrades: React.FC = () => {
           </div>
           <div className="flex items-center gap-2 text-slate-500 text-xs">
             <BarChart3 className="w-3 h-3" />
-            Charts powered by TradingView API
+            Charts powered by TradingView API aa
           </div>
         </div>
       </div>
