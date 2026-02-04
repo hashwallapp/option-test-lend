@@ -85,7 +85,7 @@ export default function Header() {
 
   return (
     <>
-      <nav className="flex items-center px-6 py-6 border-b border-slate-800/50 justify-around lg:px-[275px]">
+      <nav className="flex items-center px-6 py-6 border-b border-slate-800/50 justify-around lg:px-[100px]">
         <Link href="/" className="flex items-center gap-2">
           <img src="/images/ton4u-logo.png" alt="TON4U" className="w-8 h-8 rounded rounded-none" />
           <span className="text-2xl font-bold">TON4U</span>
