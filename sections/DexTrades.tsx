@@ -29,116 +29,103 @@ const DexTrades: React.FC = () => {
           <span className="text-sm">Back to Home</span>
         </button>
 
-        {/* Header */}
-        <div className="mb-8">
-          <div className="flex items-center gap-3 mb-2">
-            <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-2">
-              <Activity className="w-6 h-6 text-cyan-400" />
-            </div>
-            <h1 className="text-2xl lg:text-3xl font-bold text-white">
-              DEX Traders Online
-            </h1>
-          </div>
-          <p className="text-slate-400 text-sm max-w-2xl">
-            Real-time transparency for every move. Monitor the pulse of the exchange with full on-chain visibility and instant notifications.
-          </p>
+     <div className="relative mb-16">
+      <div className="absolute -top-10 -left-20 w-72 h-72 bg-cyan-500/10 rounded-full blur-[120px]" />
+      <div className="flex items-center gap-4 mb-6">
+        <div className="p-3 bg-cyan-500/10 border border-cyan-500/20 rounded-2xl">
+          <Activity className="w-10 h-10 text-cyan-400" />
         </div>
+        <h1 className="text-4xl lg:text-6xl font-bold bg-gradient-to-r from-white via-white to-slate-500 bg-clip-text text-transparent tracking-tight">
+          DEX Traders Online
+        </h1>
+      </div>
+      <p className="text-slate-400 text-lg max-w-2xl leading-relaxed">
+        Real-time transparency for every move. Monitor the pulse of the exchange with full on-chain visibility and instant notifications.
+      </p>
+    </div>
 
-        {/* Main Sections */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
-          
-          {/* Left: DEX Terminal Info */}
-          <div className="group bg-slate-900/40 border border-slate-800 rounded-xl p-4 hover:border-cyan-500/40 hover:bg-slate-900/60 transition-all duration-300">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="bg-cyan-500/10 rounded-lg p-1.5">
-                <History className="w-4 h-4 text-cyan-400" />
-              </div>
-              <h2 className="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors">
-                DEX History Tab
-              </h2>
-            </div>
-            <p className="text-slate-500 text-xs mb-3">
-              The dedicated DEX section in the trading terminal provides a comprehensive ledger of market activity. 
-              It displays <span className="text-white">all closed transactions</span> from every user on the platform.
-            </p>
-            <div className="space-y-2">
-              <div className="flex items-center gap-2 text-xs text-slate-500">
-                <CheckCircle2 className="w-3 h-3 text-cyan-500" />
-                Full transaction data (entry/exit prices)
-              </div>
-              <div className="flex items-center gap-2 text-xs text-slate-500">
-                <CheckCircle2 className="w-3 h-3 text-cyan-500" />
-                Asset performance and PnL metrics
-              </div>
-              <div className="flex items-center gap-2 text-xs text-slate-500">
-                <CheckCircle2 className="w-3 h-3 text-cyan-500" />
-                Timestamped records for every trade
-              </div>
-            </div>
-          </div>
-
-          {/* Right: Notifications Ecosystem */}
-          <div className="flex flex-col gap-3">
-            {/* TG Notifications */}
-            <div className="group bg-slate-900/40 border border-slate-800 rounded-xl p-4 hover:border-blue-500/40 hover:bg-slate-900/60 transition-all duration-300">
-              <div className="flex items-center gap-3 mb-2">
-                <div className="bg-blue-500/10 rounded-lg p-1.5 group-hover:bg-blue-500/20">
-                  <MessageSquare className="w-4 h-4 text-blue-400" />
-                </div>
-                <h3 className="text-base font-bold text-white group-hover:text-blue-400 transition-colors">
-                  Telegram Broadcasts
-                </h3>
-              </div>
-              <p className="text-slate-500 text-xs mb-2">
-                Receive instant alerts for both <span className="text-white">opening and closing</span> transactions. 
-                Each alert includes a detailed price chart for visual asset analysis.
-              </p>
-              <a 
-                href="https://t.me/T4ulife" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-xs font-bold text-blue-400 hover:text-blue-300 transition-colors"
-              >
-                JOIN LIVE CHANNEL <ExternalLink className="w-3 h-3" />
-              </a>
-            </div>
-
-            {/* App Bot */}
-            <div className="group bg-slate-900/40 border border-slate-800 rounded-xl p-4 hover:border-purple-500/40 hover:bg-slate-900/60 transition-all duration-300">
-              <div className="flex items-center gap-3 mb-2">
-                <div className="bg-purple-500/10 rounded-lg p-1.5 group-hover:bg-purple-500/20">
-                  <Smartphone className="w-4 h-4 text-purple-400" />
-                </div>
-                <h3 className="text-base font-bold text-white group-hover:text-purple-400 transition-colors">
-                  Wagem App Bot
-                </h3>
-              </div>
-              <p className="text-slate-500 text-xs">
-                All transaction notifications are mirrored in the <span className="text-purple-400">Wagem App Bot</span>, 
-                ensuring you never miss a market move.
-              </p>
-            </div>
-          </div>
+    {/* Main Sections */}
+    <div className="grid lg:grid-cols-2 gap-8 mb-12">
+      
+      {/* Left: DEX Terminal Info */}
+      <div className="bg-slate-900/40 border border-slate-800 rounded-3xl p-8 hover:border-cyan-500/20 transition-all">
+        <div className="flex items-center gap-3 mb-6">
+          <History className="w-6 h-6 text-cyan-400" />
+          <h2 className="text-2xl font-bold text-white">DEX History Tab</h2>
         </div>
-
-        {/* Live Visual Indicator */}
-        <div className="bg-slate-900/40 border border-slate-800 rounded-xl p-3 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
-            </div>
-            <p className="text-xs font-bold text-white uppercase tracking-widest">
-              Live DEX Sync Active
-            </p>
+        <p className="text-slate-400 mb-6 leading-relaxed">
+          The dedicated DEX section in the trading terminal provides a comprehensive ledger of market activity. 
+          It displays <span className="text-white font-medium">all closed transactions</span> from every user on the platform.
+        </p>
+        <div className="space-y-4">
+          <div className="flex items-center gap-3 text-sm text-slate-300">
+            <CheckCircle2 className="w-5 h-5 text-cyan-500" />
+            Full transaction data (entry/exit prices)
           </div>
-          <div className="flex items-center gap-1 text-slate-500 text-[10px]">
-            <BarChart3 className="w-2.5 h-2.5" />
-            Charts by TradingView API
+          <div className="flex items-center gap-3 text-sm text-slate-300">
+            <CheckCircle2 className="w-5 h-5 text-cyan-500" />
+            Asset performance and PnL metrics
+          </div>
+          <div className="flex items-center gap-3 text-sm text-slate-300">
+            <CheckCircle2 className="w-5 h-5 text-cyan-500" />
+            Timestamped records for every trade
           </div>
         </div>
       </div>
+
+      {/* Right: Notifications Ecosystem */}
+      <div className="flex flex-col gap-6">
+        {/* TG Notifications */}
+        <div className="bg-gradient-to-br from-blue-600/10 to-transparent border border-blue-500/20 rounded-2xl p-6 relative overflow-hidden group">
+          <Send className="absolute -bottom-2 -right-2 w-24 h-24 text-blue-500/10 -rotate-12 group-hover:rotate-0 transition-transform duration-700" />
+          <div className="flex items-center gap-3 mb-4">
+            <MessageSquare className="w-5 h-5 text-blue-400" />
+            <h3 className="text-lg font-bold text-white">Telegram Broadcasts</h3>
+          </div>
+          <p className="text-sm text-slate-400 leading-relaxed mb-4 relative z-10">
+            Receive instant alerts for both <span className="text-white font-medium">opening and closing</span> transactions. 
+            Each alert includes a detailed price chart for visual asset analysis.
+          </p>
+          <a 
+            href="[https://t.me/T4ulife](https://t.me/T4ulife)" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-xs font-bold text-blue-400 hover:text-blue-300 transition-colors"
+          >
+            JOIN THE LIVE CHANNEL <ExternalLink className="w-3 h-3" />
+          </a>
+        </div>
+
+        {/* App Bot */}
+        <div className="bg-slate-900/40 border border-slate-800 rounded-2xl p-6 group">
+          <div className="flex items-center gap-3 mb-4">
+            <Smartphone className="w-5 h-5 text-purple-400 group-hover:scale-110 transition-transform" />
+            <h3 className="text-lg font-bold text-white">Wagem App Bot</h3>
+          </div>
+          <p className="text-sm text-slate-400 leading-relaxed">
+            All transaction notifications are mirrored in the <span className="text-purple-400 font-medium font-mono">Wagem App Bot</span>, 
+            ensuring you never miss a market move, regardless of where you are.
+          </p>
+        </div>
+      </div>
     </div>
+
+    {/* Live Visual Indicator */}
+    <div className="bg-slate-900/20 border border-slate-800 rounded-2xl p-6 flex items-center justify-between">
+      <div className="flex items-center gap-4">
+        <div className="relative flex h-3 w-3">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-3 w-3 bg-cyan-500"></span>
+        </div>
+        <p className="text-sm font-bold text-white tracking-widest uppercase">Live DEX Sync Active</p>
+      </div>
+      <div className="flex items-center gap-2 text-slate-500 text-xs italic">
+        <BarChart3 className="w-4 h-4" />
+        Charts powered by TradingView API
+      </div>
+    </div>
+  </div>
+</div>
   );
 };
 

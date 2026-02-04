@@ -30,17 +30,17 @@ const TournamentsLeaderboard: React.FC = () => {
         { 
             title: "Time Frames", 
             desc: "Rankings filtered by Week, All Time, and specific Tournament durations.", 
-            icon: <Timer className="w-4 h-4 text-cyan-400" />, 
+            icon: <Timer className="w-5 h-5 text-cyan-400" />, 
         },
         { 
             title: "Token Specific", 
             desc: "Separate leaderboards for each support token with unique statistics.", 
-            icon: <Target className="w-4 h-4 text-purple-400" />, 
+            icon: <Target className="w-5 h-5 text-purple-400" />, 
         },
         { 
             title: "Real-time PnL", 
             desc: "User results are updated online instantly based on transaction performance.", 
-            icon: <TrendingUp className="w-4 h-4 text-emerald-400" />, 
+            icon: <TrendingUp className="w-5 h-5 text-emerald-400" />, 
         },
     ];
 
@@ -78,81 +78,69 @@ const TournamentsLeaderboard: React.FC = () => {
     ];
 
     return (
-        <div className="min-h-screen bg-[#0a0a0f]">
-            <div className="max-w-6xl mx-auto px-4 py-8">
+        <div className="min-h-screen bg-[#0a0a0f] text-slate-300">
+            <div className="max-w-6xl mx-auto px-6 py-12">
                 {/* Navigation */}
                 <button
                     onClick={() => router.back()}
-                    className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors mb-6"
+                    className="group flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-all mb-10"
                 >
-                    <ArrowLeft className="w-4 h-4" /> 
-                    <span className="text-sm">Back to Home</span>
+                    <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+                    <span className="text-sm font-medium">Back to Home</span>
                 </button>
 
                 {/* Header Section */}
-                <div className="mb-8">
-                    <div className="flex items-center gap-3 mb-2">
-                        <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-2">
-                            <Trophy className="w-6 h-6 text-amber-400" />
+                <div className="relative mb-16">
+                    <div className="absolute -top-10 -right-20 w-72 h-72 bg-purple-500/10 rounded-full blur-[120px]" />
+                    <div className="flex items-center gap-4 mb-6">
+                        <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded-2xl">
+                            <Trophy className="w-10 h-10 text-amber-400" />
                         </div>
-                        <h1 className="text-2xl lg:text-3xl font-bold text-white">
+                        <h1 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-white via-slate-100 to-slate-500 bg-clip-text text-transparent tracking-tight">
                             Tournaments & Leaders
                         </h1>
                     </div>
-                    <p className="text-slate-400 text-sm max-w-2xl">
+                    <p className="text-slate-400 text-base max-w-2xl">
                         Compete with the best traders in the TON ecosystem. Track your PnL, climb the ranks, and secure your place in history.
                     </p>
                 </div>
 
                 {/* Main Info Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                <div className="grid lg:grid-cols-3 gap-6 mb-12">
                     {categories.map((cat, idx) => (
-                        <div 
-                            key={idx} 
-                            className="group bg-slate-900/40 border border-slate-800 rounded-xl p-4 hover:border-cyan-500/40 hover:bg-slate-900/60 transition-all duration-300"
-                        >
-                            <div className="mb-3 bg-slate-800 rounded-lg p-2 w-fit group-hover:bg-cyan-500/10 transition-colors">
-                                {cat.icon}
-                            </div>
-                            <h3 className="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors mb-2">
-                                {cat.title}
-                            </h3>
-                            <p className="text-slate-500 text-xs">
-                                {cat.desc}
-                            </p>
+                        <div key={idx} className="bg-slate-900/40 border border-slate-800 rounded-2xl p-6 hover:bg-slate-900/60 transition-all">
+                            <div className="mb-4">{cat.icon}</div>
+                            <h3 className="text-white font-bold text-lg mb-2">{cat.title}</h3>
+                            <p className="text-sm text-slate-500 leading-relaxed">{cat.desc}</p>
                         </div>
                     ))}
                 </div>
 
                 {/* Prize Section */}
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
-                    <div className="lg:col-span-2 group bg-slate-900/40 border border-slate-800 rounded-xl p-5 hover:border-amber-500/40 hover:bg-slate-900/60 transition-all duration-300">
-                        <div className="flex items-center gap-3 mb-4">
-                            <div className="bg-amber-500/10 rounded-lg p-2">
-                                <Gift className="w-5 h-5 text-amber-400" />
-                            </div>
-                            <h2 className="text-xl font-bold text-white group-hover:text-amber-400 transition-colors">
-                                Rewards & Drops
-                            </h2>
+                <div className="grid lg:grid-cols-5 gap-8 items-stretch">
+                    <div className="lg:col-span-3 bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 rounded-3xl p-8 relative overflow-hidden">
+                        <div className="absolute top-0 right-0 p-8 opacity-10">
+                            <Medal className="w-32 h-32 text-amber-400" />
                         </div>
-                        <p className="text-slate-500 text-sm mb-6">
+                        
+                        <h2 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                            <Gift className="w-6 h-6 text-amber-400" />
+                            Rewards & Drops
+                        </h2>
+                        <p className="text-slate-400 text-sm mb-8">
                             Achieving prize places in our tournaments unlocks exclusive rewards. From token airdrops to unique physical prizes, the stakes are always high.
                         </p>
 
-                        <div className="space-y-3">
-                            <div className="flex items-center gap-3 p-3 bg-slate-800/40 border border-slate-700/50 rounded-lg">
-                                <div className="w-8 h-8 rounded-full bg-amber-500/10 flex items-center justify-center text-xs font-bold text-amber-400">
-                                    1
-                                </div>
+                        <div className="space-y-4">
+                            <div className="flex items-center gap-4 p-4 bg-slate-800/30 border border-slate-700/50 rounded-xl">
+                                <div className="w-10 h-10 rounded-full bg-amber-500/10 flex items-center justify-center font-bold text-amber-400 text-sm">1</div>
                                 <div>
                                     <p className="text-sm font-bold text-white">Winner Drops</p>
                                     <p className="text-xs text-slate-500">Distributed automatically via smart contract</p>
                                 </div>
                             </div>
-                            <div className="flex items-center gap-3 p-3 bg-slate-800/40 border border-slate-700/50 rounded-lg">
-                                <div className="w-8 h-8 rounded-full bg-slate-400/10 flex items-center justify-center text-xs font-bold text-slate-400">
-                                    2
-                                </div>
+                            <div className="flex items-center gap-4 p-4 bg-slate-800/30 border border-slate-700/50 rounded-xl">
+                                <div className="w-10 h-10 rounded-full bg-slate-400/10 flex items-center justify-center font-bold text-slate-400 text-sm">2</div>
                                 <div>
                                     <p className="text-sm font-bold text-white">Tournament Prizes</p>
                                     <p className="text-xs text-slate-500">Published in our official Telegram community</p>
@@ -161,14 +149,14 @@ const TournamentsLeaderboard: React.FC = () => {
                         </div>
                     </div>
 
-                    <div className="flex flex-col gap-4">
-                        <div className="group bg-slate-900/40 border border-slate-800 rounded-xl p-4 hover:border-cyan-500/40 hover:bg-slate-900/60 transition-all duration-300">
-                            <p className="text-xs text-slate-500 uppercase tracking-widest mb-1 font-bold">Terminal Section</p>
-                            <h4 className="text-lg font-bold text-white mb-3">"Leaders" Tab</h4>
-                            <p className="text-slate-500 text-xs mb-4">Access the full rankings directly within the trading terminal interface.</p>
-                            <button className="flex items-center justify-between w-full p-3 bg-cyan-500/10 border border-cyan-500/20 rounded-lg text-cyan-400 font-bold text-xs hover:bg-cyan-500/20 transition-all">
+                    <div className="lg:col-span-2 flex flex-col gap-4">
+                        <div className="bg-slate-900/40 border border-slate-800 rounded-2xl p-6 flex-1 flex flex-col justify-center">
+                            <p className="text-xs text-slate-500 uppercase tracking-widest mb-2 font-bold">Terminal Section</p>
+                            <h4 className="text-lg font-bold text-white mb-4">"Leaders" Tab</h4>
+                            <p className="text-sm text-slate-400 mb-6">Access the full rankings directly within the trading terminal interface.</p>
+                            <button className="flex items-center justify-between w-full p-3 bg-cyan-500/10 border border-cyan-500/20 rounded-xl text-cyan-400 font-bold text-sm hover:bg-cyan-500/20 transition-all">
                                 Open Terminal
-                                <ChevronRight className="w-3 h-3" />
+                                <ChevronRight className="w-4 h-4" />
                             </button>
                         </div>
 
@@ -176,20 +164,14 @@ const TournamentsLeaderboard: React.FC = () => {
                             href="https://t.me/t4ulife" 
                             target="_blank" 
                             rel="noopener noreferrer"
-                            className="group bg-slate-900/40 border border-slate-800 rounded-xl p-4 hover:border-cyan-500/40 hover:bg-slate-900/60 transition-all duration-300"
+                            className="bg-slate-900/40 border border-slate-800 rounded-2xl p-6 group hover:border-cyan-500/40 transition-all"
                         >
-                            <div className="flex justify-between items-center mb-2">
-                                <div className="bg-slate-800 rounded-lg p-2 group-hover:bg-cyan-500/10 transition-colors">
-                                    <Users className="w-4 h-4 text-slate-600 group-hover:text-cyan-400" />
-                                </div>
-                                <ExternalLink className="w-3 h-3 text-slate-600 group-hover:text-cyan-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                            <div className="flex items-center justify-between mb-2">
+                                <Users className="w-5 h-5 text-cyan-400" />
+                                <ExternalLink className="w-4 h-4 text-slate-600 group-hover:text-cyan-400" />
                             </div>
-                            <h3 className="text-base font-bold text-white group-hover:text-cyan-400 transition-colors">
-                                @T4ulife
-                            </h3>
-                            <p className="text-xs text-slate-500 uppercase tracking-widest mt-1">
-                                Official Group
-                            </p>
+                            <p className="text-sm font-bold text-white">Official Group</p>
+                            <p className="text-xs text-slate-500">Stay tuned for tournament announcements</p>
                         </a>
                     </div>
                 </div>
