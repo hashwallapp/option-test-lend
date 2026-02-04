@@ -54,7 +54,7 @@ const DexTrades: React.FC = () => {
                 <History className="w-5 h-5 text-cyan-400" />
               </div>
               <h2 className="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">
-                DEX History Tab 1ss
+                DEX History Tab test
               </h2>
             </div>
             <p className="text-slate-500 text-sm mb-4">
