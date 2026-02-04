@@ -97,7 +97,7 @@ const TournamentsLeaderboard: React.FC = () => {
                             <Trophy className="w-10 h-10 text-amber-400" />
                         </div>
                         <h1 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-white via-slate-100 to-slate-500 bg-clip-text text-transparent tracking-tight">
-                            Tournaments & Leaders
+                            Tournaments & Leadeboard
                         </h1>
                     </div>
                     <p className="text-slate-400 text-base max-w-2xl">
