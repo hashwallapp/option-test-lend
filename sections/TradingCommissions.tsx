@@ -3,11 +3,11 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { useRouter } from "next/navigation"
+import { useTranslations } from "@/hooks/useTranslations"
 
 const TradingCommissions = () => {
-
+  const t = useTranslations()
   const router = useRouter()
-
   const [nftUpgraded, setNftUpgraded] = useState(false)
 
   const t4uCommissions = [
@@ -46,7 +46,7 @@ const TradingCommissions = () => {
         <div className="mb-6 text-center">
           <h1 className="text-3xl lg:text-4xl font-bold mb-3 leading-tight">
             <span className="bg-gradient-to-r from-cyan-400 via-magenta-400 to-cyan-400 bg-clip-text text-transparent">
-              Commission Structure
+              {t.tradingCommissions.title}
             </span>
           </h1>
 
@@ -57,7 +57,7 @@ const TradingCommissions = () => {
 
           <div className="flex items-center justify-center gap-4 mb-4">
             <span className={`text-sm font-medium transition-colors ${!nftUpgraded ? "text-cyan-400" : "text-slate-500"}`}>
-              With Upgrade
+              {t.tradingCommissions.withNftUpgrade}
             </span>
             <button
               onClick={() => setNftUpgraded(!nftUpgraded)}
@@ -70,7 +70,7 @@ const TradingCommissions = () => {
               />
             </button>
             <span className={`text-sm font-medium transition-colors ${nftUpgraded ? "text-magenta-400" : "text-slate-500"}`}>
-              Without NFT Upgrade
+              {t.tradingCommissions.withoutNftUpgrade}
             </span>
           </div>
         </div>
@@ -81,10 +81,10 @@ const TradingCommissions = () => {
               <span className="w-8 h-8 rounded-lg bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-sm">
                 1
               </span>
-              Blockchain Commission
+              {t.tradingCommissions.blockchainCommission}
             </h2>
             <p className="text-sm text-slate-400 leading-relaxed">
-              When opening a trade, you must have a minimum balance of <span className="text-cyan-400 font-semibold">0.24 TON</span> in your wallet to cover the smart contract commission (gas).
+              {t.tradingCommissions.note}
             </p>
           </div>
 
@@ -93,10 +93,10 @@ const TradingCommissions = () => {
               <span className="w-8 h-8 rounded-lg bg-magenta-500/20 border border-magenta-500/30 flex items-center justify-center text-magenta-400 text-sm">
                 2
               </span>
-              Transaction Commission
+              {t.tradingCommissions.transactionCommission}
             </h2>
             <p className="text-sm text-slate-400 leading-relaxed mb-4">
-              When your trade closes positively, a commission is charged on the body of the bet, which varies depending on the expiration period and collateral asset you have selected.
+              {t.tradingCommissions.commissionNote}
             </p>
 
             <div className="grid lg:grid-cols-2 gap-4">
@@ -113,16 +113,16 @@ const TradingCommissions = () => {
                 </h3>
                 <div className="space-y-1 overflow-x-auto">
                   <div className="flex text-xs text-slate-500 font-medium pb-1 border-b border-slate-700 min-w-max border-l-0 mx-1 justify-between gap-[31p] border-r-[91px]">
-                    <span className="w-[60px]">Period</span>
+                    <span className="w-[60px]">{t.tradingCommissions.period}</span>
                     {!nftUpgraded ? (
-                      <span className="w-16 text-right">Rate</span>
+                      <span className="w-16 text-right">{t.tradingCommissions.rate}</span>
                     ) : (
                       <>
-                        <span className="text-right w-[66px]">Base</span>
-                        <span className="w-12 text-right">Lvl 1</span>
-                        <span className="w-12 text-right">Lvl 2</span>
-                        <span className="w-12 text-right">Lvl 3</span>
-                        <span className="w-12 text-right">Lvl 4</span>
+                        <span className="text-right w-[66px]">{t.tradingCommissions.base}</span>
+                        <span className="w-12 text-right">{t.tradingCommissions.lvl1}</span>
+                        <span className="w-12 text-right">{t.tradingCommissions.lvl2}</span>
+                        <span className="w-12 text-right">{t.tradingCommissions.lvl3}</span>
+                        <span className="w-12 text-right">{t.tradingCommissions.lvl4}</span>
                       </>
                     )}
                   </div>
@@ -146,7 +146,7 @@ const TradingCommissions = () => {
                 {nftUpgraded && (
                   <div className="p-2 rounded bg-cyan-500/10 border border-cyan-500/30 mb-0 mt-14">
                     <p className="text-xs text-cyan-300">
-                      <strong>NFT Levels:</strong> Each level reduces commission by 0.03%, up to 0.15% max reduction at Level 5
+                      <strong>{t.tradingCommissions.nftLevelsNote}</strong>
                     </p>
                   </div>
                 )}
@@ -163,8 +163,8 @@ const TradingCommissions = () => {
                 </h3>
                 <div className="space-y-1">
                   <div className="flex justify-between text-xs text-slate-500 font-medium pb-1 border-b border-slate-700">
-                    <span>Expiration Period</span>
-                    <span>Commission Rate</span>
+                    <span>{t.tradingCommissions.expirationPeriod}</span>
+                    <span>{t.tradingCommissions.commissionRate}</span>
                   </div>
                   {otherCoinsCommissions.map((item, index) => (
                     <div key={index} className="flex justify-between items-center py-1 hover:bg-slate-800/30 px-2 rounded transition-colors">
@@ -175,7 +175,7 @@ const TradingCommissions = () => {
                 </div>
                 <div className="mt-3 p-2 rounded bg-red-500/10 border border-red-500/30">
                   <p className="text-xs text-red-300">
-                    <strong>Note:</strong> No NFT commission reduction, no lose cashback, and reduced win payments compared to T4U
+                    <strong>{t.tradingCommissions.noNftNote}</strong>
                   </p>
                 </div>
               </div>
@@ -188,7 +188,7 @@ const TradingCommissions = () => {
                     <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                   <span>
-                    <strong>Tip:</strong> Toggle "With NFT Upgrade" to see reduced commission rates for T4U Token trading. Upgrading your NFT properties (5 levels) can reduce commissions by up to 0.15%!
+                    <strong>{t.tradingCommissions.upgradeTip}</strong>
                   </span>
                 </p>
               </div>
@@ -198,7 +198,7 @@ const TradingCommissions = () => {
 
         <div className="mt-6 text-center">
           <Button className="bg-gradient-to-r from-cyan-500 to-magenta-500 hover:from-cyan-600 hover:to-magenta-600 text-white font-semibold px-6 py-4 text-base">
-            Start Trading Now
+            {t.common.startTrading}
           </Button>
         </div>
       </div>

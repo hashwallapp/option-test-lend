@@ -15,9 +15,14 @@ import {
   Trophy
 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "@/hooks/useTranslations";
 
 const RoadmapTokenomics: React.FC = () => {
   const router = useRouter();
+  const t = useTranslations();
+
+   const roadmapTokenomics = t.roadmapTokenomicsDetailed ||  t.roadmapTokenomics
+
 
   return (
     <div className="min-h-screen bg-[#0a0a0f]">
@@ -28,7 +33,7 @@ const RoadmapTokenomics: React.FC = () => {
           className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors mb-6"
         >
           <ArrowLeft className="w-4 h-4" />
-          <span className="text-sm">Back to Home</span>
+          <span className="text-sm">{t.common.backToHome}</span>
         </button>
 
         {/* Header */}
@@ -38,11 +43,11 @@ const RoadmapTokenomics: React.FC = () => {
               <Milestone className="w-8 h-8 text-cyan-400" />
             </div>
             <h1 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
-              Roadmap & Tokenomics
+              { roadmapTokenomics.title}
             </h1>
           </div>
           <p className="text-slate-400 text-base max-w-2xl">
-            Strategic growth and sustainable token economics designed for long-term stability and platform expansion.
+            { roadmapTokenomics.subtitle}
           </p>
         </div>
 
@@ -54,37 +59,37 @@ const RoadmapTokenomics: React.FC = () => {
               <div className="flex items-center gap-3 mb-2">
                 <Zap className="w-6 h-6 text-cyan-400" />
                 <h2 className="text-2xl font-bold text-white">
-                  Upcoming DEX Upgrades
+                  { roadmapTokenomics.upcomingDexUpgrades}
                 </h2>
               </div>
               <p className="text-slate-400 text-sm">
-                Our development roadmap for the coming months.
+                { roadmapTokenomics.developmentRoadmap}
               </p>
             </div>
             
             <div className="space-y-4 mb-6">
               <div className="relative pl-6 border-l border-slate-800 pb-6 last:pb-0">
                 <div className="absolute left-[-5px] top-0 w-2.5 h-2.5 rounded-full bg-cyan-500" />
-                <h4 className="text-white font-bold mb-1 text-lg">Q1 Near Term (Next Week)</h4>
+                <h4 className="text-white font-bold mb-1 text-lg">{ roadmapTokenomics.q1NearTerm}</h4>
                 <p className="text-slate-500 text-sm">
-                  Introduction of collateral pools and trade options for <span className="text-cyan-400">USDT</span>.
+                  { roadmapTokenomics.q1NearTermDescription}
                 </p>
-              </div>
+                </div>
 
-              <div className="relative pl-6 border-l border-slate-800 pb-6 last:pb-0">
-                <div className="absolute left-[-5px] top-0 w-2.5 h-2.5 rounded-full bg-slate-700" />
-                <h4 className="text-white font-bold mb-1 text-lg">Transparency Integration</h4>
-                <p className="text-slate-500 text-sm">
-                  Automated output of all collateral transactions to TG group and live trading volume displays on-site.
-                </p>
-              </div>
+                <div className="relative pl-6 border-l border-slate-800 pb-6 last:pb-0">
+                  <div className="absolute left-[-5px] top-0 w-2.5 h-2.5 rounded-full bg-slate-700" />
+                  <h4 className="text-white font-bold mb-1 text-lg">{ roadmapTokenomics.transparencyIntegration}</h4>
+                  <p className="text-slate-500 text-sm">
+                    { roadmapTokenomics.transparencyIntegrationDescription}
+                  </p>
+                </div>
 
-              <div className="relative pl-6 border-l border-slate-800 pb-6 last:pb-0">
-                <div className="absolute left-[-5px] top-0 w-2.5 h-2.5 rounded-full bg-slate-700" />
-                <h4 className="text-white font-bold mb-1 text-lg">Global Scale Expansion</h4>
-                <p className="text-slate-500 text-sm">
-                  Launching Multichain support: Deals for <span className="text-emerald-400">ETH, SOL, BNB</span> and more.
-                </p>
+                <div className="relative pl-6 border-l border-slate-800 pb-6 last:pb-0">
+                  <div className="absolute left-[-5px] top-0 w-2.5 h-2.5 rounded-full bg-slate-700" />
+                  <h4 className="text-white font-bold mb-1 text-lg">{ roadmapTokenomics.globalScaleExpansion}</h4>
+                  <p className="text-slate-500 text-sm">
+                    { roadmapTokenomics.globalScaleExpansionDescription}
+                  </p>
               </div>
             </div>
 
@@ -172,7 +177,7 @@ const RoadmapTokenomics: React.FC = () => {
               <div>
                 <p className="text-emerald-400 text-sm font-semibold mb-1">Buyback Mechanism</p>
                 <p className="text-slate-300 text-sm">
-                  All commissions from side pools are dedicated to <span className="text-white font-bold underline">redeeming the T4U token</span> from the market.
+                  All commissions from side pools are dedicated to <span className="text-white font-bold underline">redeeming the T4U token</span> from the marke 
                 </p>
               </div>
             </div>

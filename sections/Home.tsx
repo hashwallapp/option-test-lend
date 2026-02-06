@@ -3,23 +3,26 @@
 import { Button } from "@/components/ui/button"
 import GlobeSvg from "@/components/icons/GlobeSvg"
 import { FC, useEffect, useRef, useState } from "react"
+import { useTranslations } from "@/hooks/useTranslations"
 
 const Home: FC = () => {
+  const t = useTranslations()
+  
   // Simple carousel state (added)
   const slides = [
     {
-      title: "Options Trading — Fast & Reliable",
-      text: "Trade options on smart contracts with sub-second execution.",
+      title: t.hero.carousel.optionsTitle,
+      text: t.hero.carousel.optionsText,
       accent: "from-cyan-400 to-magenta-400",
     },
     {
-      title: "Deep Liquidity Pools",
-      text: "Competitive spreads and pool rewards for liquidity providers.",
+      title: t.hero.carousel.liquidityTitle,
+      text: t.hero.carousel.liquidityText,
       accent: "from-purple-500 to-cyan-400",
     },
     {
-      title: "Seamless Integrations",
-      text: "Native TON integration and Telegram trading bots.",
+      title: t.hero.carousel.integrationsTitle,
+      text: t.hero.carousel.integrationsText,
       accent: "from-magenta-400 to-yellow-400",
     },
   ]
@@ -47,48 +50,48 @@ const Home: FC = () => {
           {/* Left Content */}
           <div className="flex-1 z-10">
             <div className="inline-block mb-6 px-4 py-2 rounded-full border border-magenta-500/30 bg-magenta-500/10">
-              <span className="text-sm text-magenta-300">💎 Live on TON Blockchain</span>
+              <span className="text-sm text-magenta-300">{t.hero.liveBadge}</span>
             </div>
 
             <h1 className="text-4xl lg:text-5xl font-bold mb-6 leading-tight">
-              The first DEX options on{' '}
-              <span className="bg-gradient-to-r from-cyan-400 via-magenta-400 to-cyan-400 bg-clip-text text-transparent">TON blockchain</span>
+              {t.hero.title}{' '}
+              <span className="bg-gradient-to-r from-cyan-400 via-magenta-400 to-cyan-400 bg-clip-text text-transparent">{t.hero.blockchain}</span>
             </h1>
 
             <p className="text-lg text-slate-400 mb-8 leading-relaxed max-w-xl">
-              Trade options on smart contracts. Fast. Reliable. No intermediaries.
+              {t.hero.subtitle}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
               <Button className="bg-cyan-500 hover:bg-cyan-600 text-slate-950 font-semibold px-8 py-6 text-base flex items-center gap-2 group">
                 <GlobeSvg />
-                Start trading
+                {t.common.startTrading}
               </Button>
               <Button
                 className="border border-cyan-500/50 px-8 py-6 text-base flex items-center gap-2 hover:bg-blue-600/20 transition-colors"
                 style={{ backgroundColor: "#30A3E6", color: "white" }}
               >
                 <img src="/images/telegram-logo.png" alt="Telegram" className="w-5 h-5" />
-                Trade on Telegram
+                {t.common.tradeOnTelegram}
               </Button>
             </div>
 
             <div className="grid grid-cols-2 gap-4 mt-8">
               <div>
                 <div className="text-2xl font-bold text-cyan-400 mb-1">$50M+</div>
-                <p className="text-xs text-slate-400">Trading Volume</p>
+                <p className="text-xs text-slate-400">{t.hero.stats.tradingVolume}</p>
               </div>
               <div>
                 <div className="text-2xl font-bold text-magenta-400 mb-1">24/7</div>
-                <p className="text-xs text-slate-400">Trading</p>
+                <p className="text-xs text-slate-400">{t.hero.stats.trading}</p>
               </div>
               <div>
                 <div className="text-2xl font-bold text-cyan-400 mb-1">{'<0.1s'}</div>
-                <p className="text-xs text-slate-400">Execution Time</p>
+                <p className="text-xs text-slate-400">{t.hero.stats.executionTime}</p>
               </div>
               <div>
                 <div className="text-2xl font-bold text-magenta-400 mb-1">99.9%</div>
-                <p className="text-xs text-slate-400">Uptime</p>
+                <p className="text-xs text-slate-400">{t.hero.stats.uptime}</p>
               </div>
             </div>
           </div>
@@ -105,7 +108,7 @@ const Home: FC = () => {
                 playsInline
                 className="w-64 h-64 lg:w-96 lg:h-96 object-contain drop-shadow-2xl rounded-2xl"
               />
-              <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 text-xs text-slate-500 animate-pulse">Live Market Data</div>
+              <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 text-xs text-slate-500 animate-pulse">{t.hero.liveMarketData}</div>
             </div>
           </div>
         </div>

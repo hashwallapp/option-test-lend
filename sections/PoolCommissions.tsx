@@ -1,10 +1,12 @@
 "use client"
-
+ 
 import { ChevronDown, ArrowLeft } from "lucide-react"
 import { FC } from "react"
 import { useRouter } from "next/navigation"
+import { useTranslations } from "@/hooks/useTranslations"
 
 const PoolCommissions: FC<{ setCurrentView?: (v: string) => void }> = ({ setCurrentView }) => {
+  const t = useTranslations()
   const router = useRouter()
 
   const handleBack = () => {
@@ -22,12 +24,12 @@ const PoolCommissions: FC<{ setCurrentView?: (v: string) => void }> = ({ setCurr
           onClick={handleBack}
           className="text-cyan-400 hover:text-cyan-300 transition-colors flex items-center gap-2 text-sm mb-4"
         >
-          <ArrowLeft className="w-4 h-4" /> Back to Home
+          <ArrowLeft className="w-4 h-4" /> {t.common.backToHome}
         </button>
         <h1 className="text-3xl font-bold bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent mb-2">
-          Pool Commission Assets
+          {t.poolCommissions.title}
         </h1>
-        <p className="text-slate-400 text-sm">Understanding fees and rewards for liquidity pool participation</p>
+        <p className="text-slate-400 text-sm">{t.poolCommissions.subtitle}</p>
       </div>
 
       <div className="space-y-4">
@@ -38,11 +40,9 @@ const PoolCommissions: FC<{ setCurrentView?: (v: string) => void }> = ({ setCurr
               1
             </div>
             <div className="flex-1">
-              <h3 className="text-lg font-semibold text-white mb-2">Blockchain Commission</h3>
+              <h3 className="text-lg font-semibold text-white mb-2">{t.poolCommissions.blockchainCommission}</h3>
               <p className="text-slate-300 text-sm leading-relaxed">
-                To add your tokens to the pool, you must have{" "}
-                <span className="text-cyan-400 font-semibold">0.25 TON</span> in your balance to pay for blockchain gas
-                fees.
+                {t.poolCommissions.blockchainDescription}
               </p>
             </div>
           </div>
@@ -55,16 +55,13 @@ const PoolCommissions: FC<{ setCurrentView?: (v: string) => void }> = ({ setCurr
               2
             </div>
             <div className="flex-1">
-              <h3 className="text-lg font-semibold text-white mb-2">Pool Rewards</h3>
+              <h3 className="text-lg font-semibold text-white mb-2">{t.poolCommissions.poolRewards}</h3>
               <p className="text-slate-300 text-sm leading-relaxed mb-3">
-                When you add your tokens to the pool, you become part of the trading reward pool. Your share is
-                calculated as a percentage of the total pool, and you share in the players' losses and winnings
-                according to your share.
+                {t.poolCommissions.rewardsDescription}
               </p>
               <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-3">
                 <p className="text-xs text-slate-400">
-                  <span className="text-cyan-400 font-medium">Auto-credit:</span> Tokens are credited automatically
-                  after each settlement transaction.
+                  <span className="text-cyan-400 font-medium">{t.poolCommissions.autoCredit}:</span> {t.poolCommissions.autoCreditDescription}
                 </p>
               </div>
             </div>
@@ -78,20 +75,18 @@ const PoolCommissions: FC<{ setCurrentView?: (v: string) => void }> = ({ setCurr
               3
             </div>
             <div className="flex-1">
-              <h3 className="text-lg font-semibold text-white mb-2">Pool Withdrawal Fee</h3>
+              <h3 className="text-lg font-semibold text-white mb-2">{t.poolCommissions.withdrawalFee}</h3>
               <p className="text-slate-300 text-sm leading-relaxed mb-3">
-                LP tokens can be withdrawn from the pool at any time, but if there are open trades on the platform, a
-                withdrawal fee in tokens is charged to ensure the security of the pool.
+                {t.poolCommissions.withdrawalDescription}
               </p>
               <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-3">
                 <p className="text-xs text-slate-400 mb-2">
-                  <span className="text-cyan-400 font-medium">Fee Distribution:</span> The fee is distributed among all
-                  remaining holders depending on the amount of open interest.
+                  <span className="text-cyan-400 font-medium">{t.poolCommissions.feeDistribution}:</span> {t.poolCommissions.feeDistributionDescription}
                 </p>
                 <p className="text-xs text-slate-400">
-                  <span className="text-cyan-400 font-medium">Formula:</span>{" "}
+                  <span className="text-cyan-400 font-medium">{t.poolCommissions.formula}:</span>{" "}
                   <span className="italic text-slate-500">
-                    Fee = (Open Interest / Total Pool) × Withdrawal Amount
+                    {t.poolCommissions.formulaDetail}
                   </span>
                 </p>
               </div>
@@ -102,8 +97,17 @@ const PoolCommissions: FC<{ setCurrentView?: (v: string) => void }> = ({ setCurr
         {/* Summary Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
           <div className="bg-gradient-to-br from-cyan-500/10 to-blue-500/10 border border-cyan-500/30 rounded-lg p-4">
-            <div className="text-xs text-cyan-400 mb-1 font-medium">Gas Required</div>
+            <div className="text-xs text-cyan-400 mb-1 font-medium">{t.poolCommissions.gasRequired}</div>
             <div className="text-2xl font-bold text-white">0.25 TON</div>
+          </div>
+          <div className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 border border-green-500/30 rounded-lg p-4">
+            <div className="text-xs text-green-400 mb-1 font-medium">{t.poolCommissions.rewardType}</div>
+            <div className="text-lg font-bold text-white">{t.poolCommissions.autoCredited}</div>
+          </div>
+          <div className="bg-gradient-to-br from-amber-500/10 to-orange-500/10 border border-amber-500/30 rounded-lg p-4">
+            <div className="text-xs text-amber-400 mb-1 font-medium">{t.poolCommissions.withdrawal}</div>
+            <div className="text-lg font-bold text-white">{t.poolCommissions.anytime}</div>
+            <div className="text-xs text-slate-400 mt-1">{t.poolCommissions.feeIfTradesOpen}</div>
           </div>
           <div className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 border border-green-500/30 rounded-lg p-4">
             <div className="text-xs text-green-400 mb-1 font-medium">Reward Type</div>

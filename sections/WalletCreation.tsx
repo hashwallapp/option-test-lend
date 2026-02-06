@@ -2,23 +2,26 @@
 
 import { FC } from "react"
 import { ArrowLeft, ChevronRight, Zap, Shield, Wallet, Download, CheckCircle, ExternalLink } from "lucide-react"
+import { useTranslations } from "@/hooks/useTranslations"
 
 const WalletCreation: FC<{ setCurrentView?: (v: string) => void }> = ({ setCurrentView }) => {
+  const t = useTranslations()
+  
   const wallets = [
     {
-      name: "Tonkeeper",
+      name: t.walletCreation.tonkeeper,
       url: "https://tonkeeper.com",
-      description: "Most popular TON wallet with a clean interface",
+      description: t.walletCreation.tonkeeperDescription,
     },
     {
-      name: "Wallet ",
+      name: t.walletCreation.wallet,
       url: "https://wallet.tg/ton",
-      description: "Telegram-integrated wallet for seamless mobile trading",
+      description: t.walletCreation.walletDescription,
     },
     {
-      name: "MyTonWallet",
+      name: t.walletCreation.mytonwallet,
       url: "https://mytonwallet.io",
-      description: "Web-based wallet with advanced features",
+      description: t.walletCreation.mytonwalletDescription,
     },
   ]
 
@@ -31,12 +34,12 @@ const WalletCreation: FC<{ setCurrentView?: (v: string) => void }> = ({ setCurre
           className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors mb-4"
         >
           <ArrowLeft className="w-4 h-4" />
-          Back to Home
+          {t.common.backToHome}
         </button>
 
         <div className="mb-6">
-          <h1 className="text-3xl font-bold mb-2">Creating a Wallet</h1>
-          <p className="text-slate-400 text-sm">Set up your TON wallet to start trading on Ton4U</p>
+          <h1 className="text-3xl font-bold mb-2">{t.walletCreation.title}</h1>
+          <p className="text-slate-400 text-sm">{t.walletCreation.subtitle}</p>
         </div>
 
         {/* Main Content Grid */}
@@ -50,11 +53,9 @@ const WalletCreation: FC<{ setCurrentView?: (v: string) => void }> = ({ setCurre
                   1
                 </span>
                 <div>
-                  <h2 className="text-lg font-semibold mb-2">Choose a Wallet</h2>
+                  <h2 className="text-lg font-semibold mb-2">{t.walletCreation.chooseWallet}</h2>
                   <p className="text-sm text-slate-400 leading-relaxed">
-                    To work on the platform, you need to create any non-custodial wallet on the TON network and top up
-                    its TON balance. Detailed instructions for installing and configuring wallets can be found on their
-                    official websites.
+                    {t.walletCreation.walletDescription}
                   </p>
                 </div>
               </div>
@@ -90,10 +91,9 @@ const WalletCreation: FC<{ setCurrentView?: (v: string) => void }> = ({ setCurre
                   2
                 </span>
                 <div>
-                  <h2 className="text-lg font-semibold mb-2">Recommended Setup</h2>
+                  <h2 className="text-lg font-semibold mb-2">{t.walletCreation.recommendedSetup}</h2>
                   <p className="text-sm text-slate-400 leading-relaxed">
-                    We recommend using a separate wallet for trading with a saved seed phrase and no password for
-                    signing transactions. This saves time when opening trades.
+                    {t.walletCreation.recommendedDescription}
                   </p>
                 </div>
               </div>
@@ -104,11 +104,9 @@ const WalletCreation: FC<{ setCurrentView?: (v: string) => void }> = ({ setCurre
               <div className="flex items-start gap-3">
                 <Zap className="w-6 h-6 text-cyan-400 flex-shrink-0 mt-0.5" />
                 <div>
-                  <h2 className="text-lg font-semibold mb-2 text-cyan-400">Best Choice: Wallet</h2>
+                  <h2 className="text-lg font-semibold mb-2 text-cyan-400">{t.walletCreation.bestChoice}</h2>
                   <p className="text-sm text-slate-300 leading-relaxed">
-                    The wallet imported into Telegram — <strong>Wallet</strong> — works especially well. It natively
-                    integrated in Telegram - no extra download, just type "@Wallet" in global search and set up your
-                    wallet with ease.
+                    {t.walletCreation.walletDescription}
                   </p>
                 </div>
               </div>
@@ -117,7 +115,7 @@ const WalletCreation: FC<{ setCurrentView?: (v: string) => void }> = ({ setCurre
 
           {/* Visual Section */}
           <div className="bg-slate-900/50 border border-slate-800 rounded-xl p-4 flex flex-col">
-            <h2 className="text-lg font-semibold mb-4 text-purple-400">Quick Setup Guide</h2>
+            <h2 className="text-lg font-semibold mb-4 text-purple-400">{t.walletCreation.quickSetupGuide}</h2>
 
             <div className="flex-1 flex flex-col justify-between space-y-4">
               {/* Visual Steps */}
@@ -127,8 +125,8 @@ const WalletCreation: FC<{ setCurrentView?: (v: string) => void }> = ({ setCurre
                     <Download className="w-5 h-5 text-cyan-400" />
                   </div>
                   <div>
-                    <p className="text-sm font-semibold">Download Wallet</p>
-                    <p className="text-xs text-slate-400">Choose from Tonkeeper, Wallet, or MyTonWallet</p>
+                    <p className="text-sm font-semibold">{t.walletCreation.downloadWallet}</p>
+                    <p className="text-xs text-slate-400">{t.walletCreation.walletOptions}</p>
                   </div>
                 </div>
 
@@ -137,8 +135,8 @@ const WalletCreation: FC<{ setCurrentView?: (v: string) => void }> = ({ setCurre
                     <CheckCircle className="w-5 h-5 text-cyan-400" />
                   </div>
                   <div>
-                    <p className="text-sm font-semibold">Create & Secure</p>
-                    <p className="text-xs text-slate-400">Set up your wallet and save your seed phrase</p>
+                    <p className="text-sm font-semibold">{t.walletCreation.createSecure}</p>
+                    <p className="text-xs text-slate-400">{t.walletCreation.saveSeed}</p>
                   </div>
                 </div>
 
@@ -147,8 +145,8 @@ const WalletCreation: FC<{ setCurrentView?: (v: string) => void }> = ({ setCurre
                     <Wallet className="w-5 h-5 text-purple-400" />
                   </div>
                   <div>
-                    <p className="text-sm font-semibold">Fund Your Wallet</p>
-                    <p className="text-xs text-slate-400">Add TON to your wallet balance</p>
+                    <p className="text-sm font-semibold">{t.walletCreation.fundWallet}</p>
+                    <p className="text-xs text-slate-400">{t.walletCreation.addTon}</p>
                   </div>
                 </div>
 
@@ -157,8 +155,8 @@ const WalletCreation: FC<{ setCurrentView?: (v: string) => void }> = ({ setCurre
                     <Zap className="w-5 h-5 text-purple-400" />
                   </div>
                   <div>
-                    <p className="text-sm font-semibold">Start Trading</p>
-                    <p className="text-xs text-slate-400">Connect to Ton4U and begin trading</p>
+                    <p className="text-sm font-semibold">{t.walletCreation.startTrading}</p>
+                    <p className="text-xs text-slate-400">{t.walletCreation.connectAndTrade}</p>
                   </div>
                 </div>
               </div>
@@ -183,9 +181,9 @@ const WalletCreation: FC<{ setCurrentView?: (v: string) => void }> = ({ setCurre
               <div className="p-3 bg-cyan-500/10 border border-cyan-500/30 rounded-lg">
                 <p className="text-xs text-cyan-300">
                   <span className="font-semibold flex items-center gap-1 mb-1 text-cyan-400">
-                    <Shield className="w-3 h-3" /> Security Tip:
+                    <Shield className="w-3 h-3" /> {t.walletCreation.securityTip}:
                   </span>
-                  Never share your seed phrase with anyone. Keep it stored safely offline in a place only you can access.
+                  {t.walletCreation.securityAdvice}
                 </p>
               </div>
             </div>

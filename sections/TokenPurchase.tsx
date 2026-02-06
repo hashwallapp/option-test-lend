@@ -2,8 +2,14 @@
 
 import { ArrowLeft, CheckCircle2, ExternalLink } from "lucide-react"
 import { FC } from "react"
+import { useTranslations } from "@/hooks/useTranslations"
 
 const TokenPurchase: FC<{ setCurrentView?: (v: string) => void }> = ({ setCurrentView }) => {
+  const t = useTranslations()
+
+  const tokenPurchase = t.tokenPurchaseDetailed || t.tokenPurchase 
+
+
   return (
     <div className="px-6 lg:px-12 py-6">
       <div className="max-w-6xl mx-auto">
@@ -15,14 +21,14 @@ const TokenPurchase: FC<{ setCurrentView?: (v: string) => void }> = ({ setCurren
           className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors mb-4"
         >
           <ArrowLeft className="w-4 h-4" />
-          Back to Home
+          {t.common.backToHome}
         </button>
 
         <div className="mb-4">
           <h1 className="text-3xl font-bold bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent mb-1">
-            Token Purchase
+            { tokenPurchase.title}
           </h1>
-          <p className="text-slate-400 text-sm">How to acquire T4U tokens for trading on the platform</p>
+          <p className="text-slate-400 text-sm">{ tokenPurchase.subtitle}</p>
         </div>
 
         {/* Main Content Grid */}
@@ -36,9 +42,9 @@ const TokenPurchase: FC<{ setCurrentView?: (v: string) => void }> = ({ setCurren
                   1
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-base font-semibold text-white mb-1">Prerequisites</h3>
+                  <h3 className="text-base font-semibold text-white mb-1">{ tokenPurchase.prerequisites}</h3>
                   <p className="text-slate-300 text-sm leading-relaxed">
-                    After creating a wallet and replenishing its balance with TON, you can purchase T4U tokens.
+                    { tokenPurchase.prerequisitesDescription}
                   </p>
                 </div>
               </div>
@@ -51,10 +57,9 @@ const TokenPurchase: FC<{ setCurrentView?: (v: string) => void }> = ({ setCurren
                   2
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-base font-semibold text-white mb-1">Swap via STON.fi</h3>
+                  <h3 className="text-base font-semibold text-white mb-1">{ tokenPurchase.swapViaStonfi}</h3>
                   <p className="text-slate-300 text-sm leading-relaxed">
-                    The swap can be performed via DEX ston.fi. Connect your wallet to the platform and perform the
-                    exchange.
+                    { tokenPurchase.swapViaStonfiDescription}
                   </p>
                 </div>
               </div>
@@ -67,10 +72,9 @@ const TokenPurchase: FC<{ setCurrentView?: (v: string) => void }> = ({ setCurren
                   3
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-base font-semibold text-white mb-1">Quick Access</h3>
+                  <h3 className="text-base font-semibold text-white mb-1">{ tokenPurchase.quickAccess}</h3>
                   <p className="text-slate-300 text-sm leading-relaxed">
-                    For convenience, the link to purchase the token is available directly on the website and in the
-                    trading terminal — at the top of the interface under the ston.fi icon.
+                    { tokenPurchase.quickAccessDescription}
                   </p>
                 </div>
               </div>
@@ -83,9 +87,9 @@ const TokenPurchase: FC<{ setCurrentView?: (v: string) => void }> = ({ setCurren
                   <CheckCircle2 className="w-5 h-5 text-green-400" />
                 </div>
                 <div>
-                  <h3 className="text-base font-semibold text-white">Verified Token</h3>
+                  <h3 className="text-base font-semibold text-white">{ tokenPurchase.verifiedToken}</h3>
                   <p className="text-green-300/80 text-sm">
-                    The T4U token is verified and marked with a "Verified" check mark on STON.fi
+                    {tokenPurchase.verifiedTokenDescription}
                   </p>
                 </div>
               </div>
@@ -107,9 +111,9 @@ const TokenPurchase: FC<{ setCurrentView?: (v: string) => void }> = ({ setCurren
                   />
                 </svg>
               </div>
-              <h2 className="text-xl font-bold text-white mb-2">Buy T4U on STON.fi</h2>
+              <h2 className="text-xl font-bold text-white mb-2">{tokenPurchase.buyT4UOnStonfi}</h2>
               <p className="text-slate-400 text-sm mb-6">
-                Exchange TON for T4U tokens directly on the decentralized exchange
+                { tokenPurchase.exchangeDescription}
               </p>
             </div>
 
@@ -119,17 +123,17 @@ const TokenPurchase: FC<{ setCurrentView?: (v: string) => void }> = ({ setCurren
               rel="noopener noreferrer"
               className="w-full max-w-xs bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/25"
             >
-              <span>Open STON.fi</span>
+              <span>{ tokenPurchase.openStonfi}</span>
               <ExternalLink className="w-4 h-4" />
             </a>
 
             <div className="mt-6 grid grid-cols-2 gap-4 w-full max-w-xs">
               <div className="bg-slate-800/50 rounded-lg p-3 text-center">
-                <div className="text-xs text-slate-400 mb-1">Pair</div>
+                <div className="text-xs text-slate-400 mb-1">{tokenPurchase.pair}</div>
                 <div className="text-sm font-semibold text-white">TON → T4U</div>
               </div>
               <div className="bg-slate-800/50 rounded-lg p-3 text-center">
-                <div className="text-xs text-slate-400 mb-1">Network</div>
+                <div className="text-xs text-slate-400 mb-1">{ tokenPurchase.network}</div>
                 <div className="text-sm font-semibold text-white">TON</div>
               </div>
             </div>
@@ -139,18 +143,18 @@ const TokenPurchase: FC<{ setCurrentView?: (v: string) => void }> = ({ setCurren
         {/* Summary Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
           <div className="bg-gradient-to-br from-cyan-500/10 to-blue-500/10 border border-cyan-500/30 rounded-lg p-4">
-            <div className="text-xs text-cyan-400 mb-1 font-medium">Exchange</div>
+            <div className="text-xs text-cyan-400 mb-1 font-medium">{ tokenPurchase.exchange}</div>
             <div className="text-lg font-bold text-white">STON.fi DEX</div>
           </div>
           <div className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 border border-green-500/30 rounded-lg p-4">
-            <div className="text-xs text-green-400 mb-1 font-medium">Token Status</div>
+            <div className="text-xs text-green-400 mb-1 font-medium">{ tokenPurchase.tokenStatus}</div>
             <div className="text-lg font-bold text-white flex items-center gap-2">
-              Verified <CheckCircle2 className="w-4 h-4 text-green-400" />
+              { tokenPurchase.verified} <CheckCircle2 className="w-4 h-4 text-green-400" />
             </div>
           </div>
           <div className="bg-gradient-to-br from-purple-500/10 to-violet-500/10 border border-purple-500/30 rounded-lg p-4">
-            <div className="text-xs text-purple-400 mb-1 font-medium">Access</div>
-            <div className="text-lg font-bold text-white">In-App Link</div>
+            <div className="text-xs text-purple-400 mb-1 font-medium">{ tokenPurchase.access}</div>
+            <div className="text-lg font-bold text-white">{ tokenPurchase.inAppLink}</div>
           </div>
         </div>
       </div>

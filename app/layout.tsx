@@ -3,9 +3,16 @@ import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 import "./globals.css"
 
+// 1. IMPORT the tracker and the provider
+import Header from "@/components/Header"
+import Footer from "@/components/Footer"
+import { LanguageProvider } from "@/context/LanguageContext"
+import LanguageTracker from "@/components/LanguageTracker"
+
 const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
+// 2. METADATA stays here (Server Side)
 export const metadata: Metadata = {
   title: "TON4U - Options Trading on TON Blockchain",
   description:
@@ -34,19 +41,21 @@ export const metadata: Metadata = {
   },
 }
 
-import Header from "@/components/Header"
-import Footer from "@/components/Footer"
-import { LanguageProvider } from "@/context/LanguageContext"
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  // NOTE: We do NOT call useLanguage() here anymore. 
+  // This file is now a Server Component.
+  
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className="dark" suppressHydrationWarning>
       <body className={`font-sans antialiased`}>
         <LanguageProvider>
+          {/* 3. The Tracker lives inside the Provider and updates the <html> tag for us */}
+          <LanguageTracker /> 
+          
           <div className="min-h-screen bg-slate-950 text-slate-50 font-sans selection:bg-cyan-500/30">
             <Header />
             <main>{children}</main>

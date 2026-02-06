@@ -22,24 +22,29 @@ import {
     Target,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "@/hooks/useTranslations";
 
 const TournamentsLeaderboard: React.FC = () => {
     const router = useRouter();
+    const t = useTranslations();
+
+    const tournamentsLeaderboard = t.tournamentsLeaderboardDetailed ||  t.tournamentsLeaderboard
+
 
     const categories = [
         { 
-            title: "Time Frames", 
-            desc: "Rankings filtered by Week, All Time, and specific Tournament durations.", 
+            title: tournamentsLeaderboard.timeFrames, 
+            desc:  tournamentsLeaderboard.timeFramesDescription, 
             icon: <Timer className="w-5 h-5 text-cyan-400" />, 
         },
         { 
-            title: "Token Specific", 
-            desc: "Separate leaderboards for each support token with unique statistics.", 
+            title:  tournamentsLeaderboard.tokenSpecific, 
+            desc:  tournamentsLeaderboard.tokenSpecificDescription, 
             icon: <Target className="w-5 h-5 text-purple-400" />, 
         },
         { 
-            title: "Real-time PnL", 
-            desc: "User results are updated online instantly based on transaction performance.", 
+            title:  tournamentsLeaderboard.realTimePnl, 
+            desc:  tournamentsLeaderboard.realTimePnlDescription, 
             icon: <TrendingUp className="w-5 h-5 text-emerald-400" />, 
         },
     ];
@@ -86,7 +91,7 @@ const TournamentsLeaderboard: React.FC = () => {
                     className="group flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-all mb-10"
                 >
                     <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-                    <span className="text-sm font-medium">Back to Home</span>
+                    <span className="text-sm font-medium">{t.common.backToHome}</span>
                 </button>
 
                 {/* Header Section */}
@@ -97,11 +102,11 @@ const TournamentsLeaderboard: React.FC = () => {
                             <Trophy className="w-10 h-10 text-amber-400" />
                         </div>
                         <h1 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-white via-slate-100 to-slate-500 bg-clip-text text-transparent tracking-tight">
-                            Tournaments & Leadeboard
+                            { tournamentsLeaderboard.title}
                         </h1>
                     </div>
                     <p className="text-slate-400 text-base max-w-2xl">
-                        Compete with the best traders in the TON ecosystem. Track your PnL, climb the ranks, and secure your place in history.
+                        { tournamentsLeaderboard.subtitle}
                     </p>
                 </div>
 

@@ -1,6 +1,10 @@
+"use client"
+
 import StonfiSvg from "@/components/icons/StonfiSvg"
+import { useTranslations } from "@/hooks/useTranslations"
 
 export default function Footer() {
+  const t = useTranslations()
   return (
     <footer className="border-t border-slate-800/50 px-6 lg:px-12 py-12 mt-12">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
@@ -9,7 +13,7 @@ export default function Footer() {
             <img src="/images/ton4u-logo.png" alt="TON4U" className="w-6 h-6 rounded" />
             <span className="font-bold">TON4U</span>
           </div>
-          <p className="text-sm text-slate-500 mb-4">Professional options trading on TON blockchain</p>
+          <p className="text-sm text-slate-500 mb-4">{t.hero.footer.tagline}</p>
           <a
             href="https://ston.fi"
             target="_blank"
@@ -22,61 +26,61 @@ export default function Footer() {
           </a>
         </div>
         <div>
-          <h4 className="font-semibold mb-4">Product</h4>
+          <h4 className="font-semibold mb-4">{t.hero.footer.product}</h4>
           <ul className="space-y-2 text-sm text-slate-400">
             <li>
               <a href="/trading" className="hover:text-cyan-400 transition-colors">
-                Trading Platform
+                {t.hero.footer.tradingPlatform}
               </a>
             </li>
             <li>
               <a href="#" className="hover:text-cyan-400 transition-colors">
-                API Reference
+                {t.hero.footer.apiReference}
               </a>
             </li>
             <li>
               <a href="#" className="hover:text-cyan-400 transition-colors">
-                Pricing
+                {t.hero.footer.pricing}
               </a>
             </li>
           </ul>
         </div>
         <div>
-          <h4 className="font-semibold mb-4">Resources</h4>
+          <h4 className="font-semibold mb-4">{t.hero.footer.resources}</h4>
           <ul className="space-y-2 text-sm text-slate-400">
             <li>
               <a href="/about" className="hover:text-magenta-400 transition-colors">
-                Documentation
+                {t.hero.footer.documentation}
               </a>
             </li>
             <li>
               <a href="#" className="hover:text-magenta-400 transition-colors">
-                Support
+                {t.hero.footer.support}
               </a>
             </li>
             <li>
               <a href="#" className="hover:text-magenta-400 transition-colors">
-                Blog
+                {t.hero.footer.blog}
               </a>
             </li>
           </ul>
         </div>
         <div>
-          <h4 className="font-semibold mb-4">Community</h4>
+          <h4 className="font-semibold mb-4">{t.hero.footer.community}</h4>
           <ul className="space-y-2 text-sm text-slate-400">
             <li>
               <a href="#" className="hover:text-cyan-400 transition-colors">
-                Twitter
+                {t.hero.footer.twitter}
               </a>
             </li>
             <li>
               <a href="#" className="hover:text-cyan-400 transition-colors">
-                Discord
+                {t.hero.footer.discord}
               </a>
             </li>
             <li>
               <a href="#" className="hover:text-cyan-400 transition-colors">
-                Telegram
+                {t.hero.footer.telegram}
               </a>
             </li>
           </ul>
@@ -85,17 +89,17 @@ export default function Footer() {
 
       <div className="border-t border-slate-800/50 pt-8 flex flex-col md:flex-row items-center justify-between text-sm text-slate-500">
         <div className="flex items-center gap-2">
-          <p>&copy; 2025 TON4U. All rights reserved.</p>
+          <p>{t.hero.footer.copyright}</p>
         </div>
         <div className="flex gap-6 mt-4 md:mt-0">
           <a href="#" className="hover:text-cyan-400 transition-colors">
-            Privacy
+            {t.hero.footer.privacy}
           </a>
           <a href="#" className="hover:text-magenta-400 transition-colors">
-            Terms
+            {t.hero.footer.terms}
           </a>
           <a href="#" className="hover:text-cyan-400 transition-colors">
-            Security
+            {t.hero.footer.security}
           </a>
         </div>
       </div>

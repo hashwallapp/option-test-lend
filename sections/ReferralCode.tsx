@@ -3,9 +3,14 @@
 import React from 'react'
 import { ArrowLeft, Users, CreditCard, TrendingUp, Copy, Shield, Check, ExternalLink, ShieldCheck } from 'lucide-react'
 import { useRouter } from 'next/navigation'
+import { useTranslations } from "@/hooks/useTranslations"
+import ReferralNFT from './ReferralNfts'
 
 const ReferralSystem = () => {
-const router = useRouter()
+const router = useRouter(); 
+const t = useTranslations()
+
+const referralCodeData = t.referralCodeDetailed||  t.referralCode
 
 return (
 <div className="min-h-screen bg-[#0a0a0f]">
@@ -16,7 +21,7 @@ onClick={() => router.back()}
 className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors mb-6"
 >
 <ArrowLeft className="w-4 h-4" />
-Back to Home
+{t.common.backToHome}
 </button>
 
     {/* Header */}
@@ -24,11 +29,11 @@ Back to Home
       <div className="flex items-center gap-3 mb-2">
         <Users className="w-8 h-8 text-cyan-400" />
         <h1 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
-          Referrals & Codes
+          {referralCodeData.title}
         </h1>
       </div>
       <p className="text-slate-400 text-base max-w-2xl">
-        Join the T4U ecosystem through our community-driven referral network and earn rewards.
+        {referralCodeData.subtitle}
       </p>
     </div>
 
@@ -40,30 +45,30 @@ Back to Home
         <div className="bg-slate-900/40 border border-slate-800 rounded-2xl p-6">
           <h3 className="text-white font-semibold mb-3 flex items-center gap-2">
             <ShieldCheck className="w-5 h-5 text-cyan-400" />
-            Accessing the Platform
+            {referralCodeData.accessingPlatform}
           </h3>
           <p className="text-sm text-slate-400 leading-relaxed">
-            To trade on the site, if there was no click on a referral link, you need to manually enter the <strong>referral code</strong> of another participant. This ensures you are part of the verified trading community.
+            {referralCodeData.accessingPlatformDescription}
           </p>
         </div>
 
         <div className="bg-slate-900/40 border border-slate-800 rounded-2xl p-6">
           <h3 className="text-white font-semibold mb-3 flex items-center gap-2">
             <CreditCard className="w-5 h-5 text-purple-400" />
-            Earning as a Referrer
+            {referralCodeData.earningAsReferrer}
           </h3>
           <p className="text-sm text-slate-400 leading-relaxed">
-            To get your own referral code and receive income from your referrals&apos; transactions, you need to purchase an <strong>NFT</strong> on the site and improve its parameters.
+            {referralCodeData.earningAsReferrerDescription}
           </p>
         </div>
 
         <div className="bg-cyan-500/5 border border-cyan-500/10 rounded-2xl p-6">
           <h3 className="text-white font-semibold mb-3 flex items-center gap-2">
             <TrendingUp className="w-5 h-5 text-cyan-400" />
-            NFT Utilities
+            {referralCodeData.nftUtilitiesTitle}
           </h3>
           <p className="text-sm text-slate-400 leading-relaxed">
-            After creation, the NFT will appear in your wallet and will be displayed in the <strong>&quot;Referrals&quot;</strong> section. There, you can copy your unique referral code and start building your network.
+            {referralCodeData.nftUtilitiesDescription}
           </p>
         </div>
       </div>
@@ -72,7 +77,7 @@ Back to Home
       <div className="space-y-6">
         <div className="bg-gradient-to-b from-slate-900/60 to-slate-950/60 border border-slate-800 rounded-2xl p-8 flex flex-col justify-between">
           <div>
-            <h2 className="text-xl font-bold text-white mb-6">How it Works</h2>
+            <h2 className="text-xl font-bold text-white mb-6">{referralCodeData.howItWorks}</h2>
             
             {/* Visual Step List */}
             <div className="space-y-6 relative">
@@ -122,15 +127,15 @@ Back to Home
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
       <div className="bg-slate-900/40 border border-slate-800 p-5 rounded-2xl flex items-center justify-between">
         <div>
-          <p className="text-xs text-slate-500 uppercase tracking-widest mb-1">Income Source</p>
-          <p className="text-lg font-bold text-white">Referral Transactions</p>
+          <p className="text-xs text-slate-500 uppercase tracking-widest mb-1">{referralCodeData.incomeSource}</p>
+          <p className="text-lg font-bold text-white">{referralCodeData.referralTransactions}</p>
         </div>
         <TrendingUp className="w-8 h-8 text-cyan-500/20" />
       </div>
       <div className="bg-slate-900/40 border border-slate-800 p-5 rounded-2xl flex items-center justify-between">
         <div>
-          <p className="text-xs text-slate-500 uppercase tracking-widest mb-1">Requirement</p>
-          <p className="text-lg font-bold text-white">NFT Membership</p>
+          <p className="text-xs text-slate-500 uppercase tracking-widest mb-1">{referralCodeData.requirement}</p>
+          <p className="text-lg font-bold text-white">{referralCodeData.nftMembership}</p>
         </div>
         <CreditCard className="w-8 h-8 text-purple-500/20" />
       </div>

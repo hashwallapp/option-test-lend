@@ -17,64 +17,62 @@ import {
   History,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "@/hooks/useTranslations";
 
 const AboutProject: React.FC = () => {
+  const t = useTranslations();
   const router = useRouter();
 
   const earningDirections = [
     {
       icon: <BarChart3 className="w-6 h-6 text-cyan-400" />,
-      title: "Options Trading",
-      description:
-        "A simple interface with the ability to open purchase or sale transactions for a selected time period. Positive closings yield income from ×1.75 to ×1.94.",
+      title: t.aboutProject.earning.trading.title,
+      description: t.aboutProject.earning.trading.description,
     },
     {
       icon: <Coins className="w-6 h-6 text-purple-400" />,
-      title: "Liquidity Pool",
-      description:
-        "Provide additional liquidity to the security pool. It grows through trading commissions and negative transaction results sent to the pool.",
+      title: t.aboutProject.earning.liquidity.title,
+      description: t.aboutProject.earning.liquidity.description,
     },
     {
       icon: <TrendingUp className="w-6 h-6 text-emerald-400" />,
-      title: "Asset Growth",
-      description:
-        "Trading activity requires tokens, driving demand. Commissions and losses entering the pool contribute to long-term price appreciation.",
+      title: t.aboutProject.earning.growth.title,
+      description: t.aboutProject.earning.growth.description,
     },
     {
       icon: <Users className="w-6 h-6 text-amber-400" />,
-      title: "Referral NFTs",
-      description:
-        "Earn tokens from your referrals' trades based on your NFT level. Unique feature: sell your referral network together with your NFT.",
+      title: t.aboutProject.earning.referral.title,
+      description: t.aboutProject.earning.referral.description,
     },
   ];
 
   const socialLinks = [
     {
-      label: "Support",
+      label: t.aboutProject.social.support,
       handle: "@Ton4you_support",
       url: "https://t.me/ton4you_support",
       icon: <MessageSquare className="w-4 h-4" />,
     },
     {
-      label: "Online Deals",
+      label: t.aboutProject.social.onlineDeals,
       handle: "@T4ulife",
       url: "https://t.me/T4ulife",
       icon: <Zap className="w-4 h-4" />,
     },
     {
-      label: "DEX Chat",
+      label: t.aboutProject.social.dexChat,
       handle: "@T4u_obt",
       url: "https://t.me/T4u_obt",
       icon: <Users className="w-4 h-4" />,
     },
     {
-      label: "Information",
+      label: t.aboutProject.social.information,
       handle: "@T4rules",
       url: "https://t.me/T4rules",
       icon: <ShieldCheck className="w-4 h-4" />,
     },
     {
-      label: "Volume Records",
+      label: t.aboutProject.social.volumeRecords,
       handle: "@Max_order_t4u",
       url: "https://t.me/Max_order_t4u",
       icon: <History className="w-4 h-4" />,
@@ -90,7 +88,7 @@ const AboutProject: React.FC = () => {
           className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors mb-6"
         >
           <ArrowLeft className="w-4 h-4" />
-          <span className="text-sm">Back to Home</span>
+          <span className="text-sm">{t.common.backToHome}</span>
         </button>
 
         {/* Hero Section */}
@@ -100,12 +98,11 @@ const AboutProject: React.FC = () => {
               <LayoutDashboard className="w-8 h-8 text-cyan-400" />
             </div>
             <h1 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
-              Product Overview
+              {t.aboutProject.productOverview}
             </h1>
           </div>
           <p className="text-slate-400 text-base max-w-3xl">
-            We are a <span className="text-white font-semibold">DEX options exchange</span> built on TON smart contracts. 
-            By utilizing T4U, USDT, and partner tokens, we ensure a transparent, decentralized trading environment.
+            {t.aboutProject.subtitle}
           </p>
         </div>
 
@@ -118,10 +115,10 @@ const AboutProject: React.FC = () => {
               </div>
               <div>
                 <h3 className="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors mb-2">
-                  Flexible Expiration
+                  {t.aboutProject.features.flexibility.title}
                 </h3>
                 <p className="text-slate-500 text-sm">
-                  Open options with expiration periods ranging from <span className="text-cyan-400">2.5 minutes to 1 month</span>.
+                  {t.aboutProject.features.flexibility.description}
                 </p>
               </div>
             </div>
@@ -133,10 +130,10 @@ const AboutProject: React.FC = () => {
               </div>
               <div>
                 <h3 className="text-xl font-bold text-white group-hover:text-purple-400 transition-colors mb-2">
-                  Transparent Execution
+                  {t.aboutProject.features.transparency.title}
                 </h3>
                 <p className="text-slate-500 text-sm">
-                  Quotes from leading exchanges. All transactions handled by <span className="text-purple-400">Smart Contracts</span>.
+                  {t.aboutProject.features.transparency.description}
                 </p>
               </div>
             </div>
@@ -149,11 +146,11 @@ const AboutProject: React.FC = () => {
             <div className="flex items-center gap-3 mb-2">
               <div className="w-8 h-[2px] bg-cyan-500" />
               <h2 className="text-2xl font-bold text-white">
-                Earn in Multiple Directions
+                {t.aboutProject.earning.title}
               </h2>
             </div>
             <p className="text-slate-400 text-sm">
-              Explore different ways to generate income on our platform.
+              {t.aboutProject.earning.earningDescription}
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -182,13 +179,13 @@ const AboutProject: React.FC = () => {
             <div className="mb-4">
               <div className="flex items-center gap-3 mb-2">
                 <LinkIcon className="w-6 h-6 text-cyan-400" />
-                <h2 className="text-2xl font-bold text-white">
-                  Useful Links
-                </h2>
-              </div>
-              <p className="text-slate-400 text-sm">
-                Connect with our community and stay updated.
-              </p>
+                 <h2 className="text-2xl font-bold text-white">
+                   {t.aboutProject.usefulLinks}
+                 </h2>
+               </div>
+               <p className="text-slate-400 text-sm">
+                 {t.aboutProject.communityConnect}
+               </p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {socialLinks.map((link, idx) => (
@@ -222,9 +219,9 @@ const AboutProject: React.FC = () => {
             <div className="bg-cyan-500/10 rounded-full p-3 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
               <BarChart3 className="w-8 h-8 text-cyan-400" />
             </div>
-            <h3 className="text-white font-semibold mb-2">Platform Leaderboard</h3>
+            <h3 className="text-white font-semibold mb-2">{t.aboutProject.platformLeaderboard}</h3>
             <p className="text-sm text-slate-500">
-              Track top traders and participate in regular contests to win additional rewards based on volume.
+              {t.aboutProject.leaderboardDescription}
             </p>
           </div>
         </div>

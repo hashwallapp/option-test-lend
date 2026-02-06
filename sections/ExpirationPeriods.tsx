@@ -1,24 +1,26 @@
 "use client"
-
+ 
+import { useTranslations } from "@/hooks/useTranslations"
 export default function ExpirationPeriods() {
+  const t = useTranslations()
   return (
     <div className="px-6 lg:px-12 py-6">
       <div className="max-w-6xl mx-auto">
         <div className="mb-6">
-          <h1 className="text-3xl font-bold mb-2">Option Expiration Periods</h1>
-          <p className="text-slate-400 text-sm">View available expiration periods and their corresponding spreads</p>
+          <h1 className="text-3xl font-bold mb-2">{t.expirationPeriods.title}</h1>
+          <p className="text-slate-400 text-sm">{t.expirationPeriods.subtitle}</p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-6">
           <div className="bg-slate-900/50 border border-slate-800 rounded-xl p-4">
-            <h2 className="text-lg font-semibold mb-4 text-cyan-400">Expiration Periods & Spreads</h2>
+            <h2 className="text-lg font-semibold mb-4 text-cyan-400">{t.expirationPeriods.periodsAndSpreads}</h2>
 
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
                   <tr className="border-b border-slate-800">
-                    <th className="text-left py-2 px-3 text-sm font-semibold text-slate-300">Period</th>
-                    <th className="text-right py-2 px-3 text-sm font-semibold text-slate-300">Spread</th>
+                    <th className="text-left py-2 px-3 text-sm font-semibold text-slate-300">{t.expirationPeriods.period}</th>
+                    <th className="text-right py-2 px-3 text-sm font-semibold text-slate-300">{t.expirationPeriods.spread}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -47,35 +49,35 @@ export default function ExpirationPeriods() {
 
             <div className="mt-4 p-3 bg-cyan-500/10 border border-cyan-500/30 rounded-lg">
               <p className="text-xs text-cyan-300">
-                <span className="font-semibold">Note:</span> Spreads represent the additional cost per option based on the expiration period. Longer periods have higher spreads due to increased market uncertainty.
+                <span className="font-semibold">{t.expirationPeriods.note}:</span> {t.expirationPeriods.spreadNote}
               </p>
             </div>
           </div>
 
           <div className="bg-slate-900/50 border border-slate-800 rounded-xl p-4 flex flex-col items-center justify-center">
-            <h2 className="text-lg font-semibold mb-4 text-magenta-400">*Trading NFT Visuals</h2>
+            <h2 className="text-lg font-semibold mb-4 text-magenta-400">{t.expirationPeriods.tradingNftVisuals}</h2>
 
             <div className="relative w-full max-w-md aspect-square flex items-center justify-center">
               <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/20 via-slate-950/50 to-magenta-900/20 rounded-2xl blur-2xl"></div>
               <video src="/images/4nft-animation.mp4" autoPlay loop muted playsInline className="relative w-full h-full object-contain rounded-xl" />
             </div>
 
-            <p className="text-xs text-slate-400 text-center mt-4">Experience seamless options trading across all expiration periods</p>
+            <p className="text-xs text-slate-400 text-center mt-4">{t.expirationPeriods.experienceSeamless}</p>
           </div>
         </div>
 
         <div className="grid md:grid-cols-3 gap-4 mt-6">
           <div className="bg-slate-900/50 border border-slate-800 rounded-lg p-4">
             <div className="text-cyan-400 text-xl font-bold mb-1">12</div>
-            <p className="text-xs text-slate-400">Available Periods</p>
+            <p className="text-xs text-slate-400">{t.expirationPeriods.availablePeriods}</p>
           </div>
           <div className="bg-slate-900/50 border border-slate-800 rounded-lg p-4">
             <div className="text-magenta-400 text-xl font-bold mb-1">2.5min - 1mo</div>
-            <p className="text-xs text-slate-400">Period Range</p>
+            <p className="text-xs text-slate-400">{t.expirationPeriods.periodRange}</p>
           </div>
           <div className="bg-slate-900/50 border border-slate-800 rounded-lg p-4">
             <div className="text-cyan-400 text-xl font-bold mb-1">0% - 3.0%</div>
-            <p className="text-xs text-slate-400">Spread Range</p>
+            <p className="text-xs text-slate-400">{t.expirationPeriods.spreadRange}</p>
           </div>
         </div>
       </div>

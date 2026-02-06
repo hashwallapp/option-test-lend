@@ -13,9 +13,11 @@ import {
   CheckCircle2 
 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "@/hooks/useTranslations";
 
 const DexTrades: React.FC = () => {
   const router = useRouter();
+  const t = useTranslations();
 
   return (
     <div className="min-h-screen bg-[#0a0a0f] text-slate-300">
@@ -26,7 +28,7 @@ const DexTrades: React.FC = () => {
           className="group flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-all mb-10"
         >
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-          <span className="text-sm font-medium">Back to Home</span>
+          <span className="text-sm font-medium">{t.common.backToHome}</span>
         </button>
 
         {/* Header */}
@@ -37,11 +39,11 @@ const DexTrades: React.FC = () => {
               <Activity className="w-10 h-10 text-cyan-400" />
             </div>
             <h1 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-white via-white to-slate-500 bg-clip-text text-transparent tracking-tight">
-              DEX Traders Online
+              {t.dexTrades.title}
             </h1>
           </div>
           <p className="text-slate-400 text-lg max-w-2xl leading-relaxed">
-            Real-time transparency for every move. Monitor the pulse of the exchange with full on-chain visibility and instant notifications.
+            {t.dexTrades.subtitle}
           </p>
         </div>
 
@@ -52,24 +54,23 @@ const DexTrades: React.FC = () => {
           <div className="bg-slate-900/40 border border-slate-800 rounded-3xl p-8 hover:border-cyan-500/20 transition-all">
             <div className="flex items-center gap-3 mb-6">
               <History className="w-6 h-6 text-cyan-400" />
-              <h2 className="text-2xl font-bold text-white">DEX History Tab</h2>
+              <h2 className="text-2xl font-bold text-white">{t.dexTrades.dexHistoryTab}</h2>
             </div>
             <p className="text-slate-400 mb-6 leading-relaxed">
-              The dedicated DEX section in the trading terminal provides a comprehensive ledger of market activity. 
-              It displays <span className="text-white font-medium">all closed transactions</span> from every user on the platform.
+              {t.dexTrades.dexHistoryDescription}
             </p>
             <div className="space-y-4">
               <div className="flex items-center gap-3 text-sm text-slate-300">
                 <CheckCircle2 className="w-5 h-5 text-cyan-500" />
-                Full transaction data (entry/exit prices)
+                {t.dexTrades.fullTransactionData}
               </div>
               <div className="flex items-center gap-3 text-sm text-slate-300">
                 <CheckCircle2 className="w-5 h-5 text-cyan-500" />
-                Asset performance and PnL metrics
+                {t.dexTrades.assetPerformance}
               </div>
               <div className="flex items-center gap-3 text-sm text-slate-300">
                 <CheckCircle2 className="w-5 h-5 text-cyan-500" />
-                Timestamped records for every trade
+                {t.dexTrades.timestampedRecords}
               </div>
             </div>
           </div>
@@ -81,11 +82,10 @@ const DexTrades: React.FC = () => {
               <Send className="absolute -bottom-2 -right-2 w-24 h-24 text-blue-500/10 -rotate-12 group-hover:rotate-0 transition-transform duration-700" />
               <div className="flex items-center gap-3 mb-4">
                 <MessageSquare className="w-5 h-5 text-blue-400" />
-                <h3 className="text-lg font-bold text-white">Telegram Broadcasts</h3>
+                <h3 className="text-lg font-bold text-white">{t.dexTrades.telegramBroadcasts}</h3>
               </div>
               <p className="text-sm text-slate-400 leading-relaxed mb-4 relative z-10">
-                Receive instant alerts for both <span className="text-white font-medium">opening and closing</span> transactions. 
-                Each alert includes a detailed price chart for visual asset analysis.
+                {t.dexTrades.telegramBroadcastsDescription}
               </p>
               <a 
                 href="https://t.me/T4ulife" 
@@ -93,7 +93,7 @@ const DexTrades: React.FC = () => {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-xs font-bold text-blue-400 hover:text-blue-300 transition-colors"
               >
-                JOIN THE LIVE CHANNEL <ExternalLink className="w-3 h-3" />
+                {t.dexTrades.joinLiveChannel} <ExternalLink className="w-3 h-3" />
               </a>
             </div>
 
@@ -101,11 +101,10 @@ const DexTrades: React.FC = () => {
             <div className="bg-slate-900/40 border border-slate-800 rounded-2xl p-6 group">
               <div className="flex items-center gap-3 mb-4">
                 <Smartphone className="w-5 h-5 text-purple-400 group-hover:scale-110 transition-transform" />
-                <h3 className="text-lg font-bold text-white">Wagem App Bot</h3>
+                <h3 className="text-lg font-bold text-white">{t.dexTrades.wagemAppBot}</h3>
               </div>
               <p className="text-sm text-slate-400 leading-relaxed">
-                All transaction notifications are mirrored in the <span className="text-purple-400 font-medium font-mono">Wagem App Bot</span>, 
-                ensuring you never miss a market move, regardless of where you are.
+                {t.dexTrades.wagemAppBotDescription}
               </p>
             </div>
           </div>
@@ -118,11 +117,11 @@ const DexTrades: React.FC = () => {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-3 w-3 bg-cyan-500"></span>
             </div>
-            <p className="text-sm font-bold text-white tracking-widest uppercase">Live DEX Sync Active</p>
+            <p className="text-sm font-bold text-white tracking-widest uppercase">{t.dexTrades.liveDexSyncActive}</p>
           </div>
           <div className="flex items-center gap-2 text-slate-500 text-xs italic">
             <BarChart3 className="w-4 h-4" />
-            Charts powered by TradingView API
+            {t.dexTrades.chartsPoweredBy}
           </div>
         </div>
       </div>
