@@ -10,7 +10,7 @@ const ReferralSystem = () => {
 const router = useRouter(); 
 const t = useTranslations()
 
-const referralCodeData = t.referralCodeDetailed||  t.referralCode
+const referralCodeData = t.referralCodeDetailed ||  t.referralCode
 
 return (
 <div className="min-h-screen bg-[#0a0a0f]">

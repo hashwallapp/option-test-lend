@@ -87,49 +87,79 @@ export default function Header() {
 
   return (
     <>
-      <nav className="flex items-center px-6 py-6 border-b border-slate-800/50 justify-around lg:px-[100px]">
-        <Link href="/" className="flex items-center gap-2">
-          <img src="/images/ton4u-logo.png" alt="TON4U" className="w-8 h-8 rounded rounded-none" />
-          <span className="text-2xl font-bold">TON4U</span>
-        </Link>
-
-        <div className="hidden md:flex items-center text-sm gap-8">
-          {navigationItems.map((item) => (
-            <div
-              key={item.label}
-              className="relative"
-              onMouseEnter={() => handleDropdownMouseEnter(item.label)}
-              onMouseLeave={handleDropdownMouseLeave}
-            >
-              <button className="flex items-center gap-2">
-                {item.label}
-                <ChevronDown className="w-4 h-4 text-slate-400" />
-              </button>
-
-              {openDropdown === item.label && (
-                <div className="absolute top-full left-0 mt-3 w-64 bg-slate-900 border border-slate-800 rounded shadow-lg z-50">
-                  {item.submenu.map((subItem) => (
-                    <Link key={subItem.label} href={subItem.href} className="block px-6 py-3 text-slate-400 hover:text-cyan-400" onClick={closeMenus}>
-                      {subItem.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-
-        <div className="flex items-center gap-3">
-          <div className="hidden md:flex bg-slate-800/30 border border-slate-700 rounded-lg p-1">
-            <button onClick={() => setLanguage("en")} className={`px-3 py-1 text-xs ${language === "en" ? "text-cyan-400" : "text-slate-400"}`}>{t.common.en}</button>
-            <button onClick={() => setLanguage("ru")} className={`px-3 py-1 text-xs ${language === "ru" ? "text-cyan-400" : "text-slate-400"}`}>{t.common.ru}</button>
+   <header className="sticky top-0 z-50 w-full border-b border-slate-800/50 bg-slate-950/80 backdrop-blur-md">
+        {/* Изменено: используем container для идеального выравнивания с контентом страницы */}
+        <nav className="container mx-auto px-4 lg:px-8 h-[80px] flex items-center justify-between">
+          
+          {/* ЛОГОТИП: Обернут в блок с фиксированной шириной для стабильности */}
+          <div className="flex-shrink-0 min-w-[150px]">
+            <Link href="/" className="flex items-center gap-3 group w-fit ml-12">
+              <img src="/images/ton4u-logo.png" alt="TON4U" className="w-8 h-8 md:w-9 md:h-9" />
+              <span className="text-xl md:text-2xl font-bold tracking-tight bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
+                TON4U
+              </span>
+            </Link>
           </div>
 
-          <button className="md:hidden p-2 hover:bg-slate-800 rounded-lg" onClick={() => setMobileMenuOpen((s) => !s)}>
-            {mobileMenuOpen ? <X className="w-6 h-6 text-cyan-400" /> : <Menu className="w-6 h-6 text-cyan-400" />}
-          </button>
-        </div>
-      </nav>
+          {/* НАВИГАЦИЯ: ml-4 или ml-8 даст отступ от логотипа, gap-0 так как ширина внутри ячеек */}
+          <div className="hidden md:flex items-center ml-12 lg:ml-12"> 
+            {navigationItems.map((item) => (
+              <div
+                key={item.label}
+                // Увеличено до 190px для гарантии одной строки и добавлено центрирование
+                className="relative w-[175px] lg:w-[165px] flex justify-center items-start"
+                onMouseEnter={() => handleDropdownMouseEnter(item.label)}
+                onMouseLeave={handleDropdownMouseLeave}
+              >
+                <button className="flex items-center gap-2 px-2 py-2 text-[13px] lg:text-sm font-medium text-slate-300 hover:text-cyan-400 transition-all rounded-lg hover:bg-slate-800/40">
+                  {/* whitespace-nowrap ЗАПРЕЩАЕТ перенос строки */}
+                  <span key={language} className="animate-in fade-in duration-300 whitespace-nowrap">
+                    {item.label}
+                  </span>
+                  <ChevronDown className={`w-4 h-4 text-slate-500 flex-shrink-0 transition-transform ${openDropdown === item.label ? 'rotate-180' : ''}`} />
+                </button>
+
+                {openDropdown === item.label && (
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-64 bg-slate-900 border border-slate-800 rounded-xl shadow-2xl z-50 p-2 animate-in fade-in zoom-in-95 duration-200">
+                    {item.submenu.map((subItem) => (
+                      <Link 
+                        key={subItem.label} 
+                        href={subItem.href} 
+                        className="block px-4 py-2.5 text-[13px] text-slate-400 hover:text-cyan-400 hover:bg-slate-800/50 rounded-lg transition-colors" 
+                        onClick={closeMenus}
+                      >
+                        {subItem.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* ЯЗЫКИ И КНОПКИ */}
+          <div className="flex-shrink-0 min-w-[120px] flex justify-end">
+            <div className="hidden md:flex bg-slate-800/30 border border-slate-700 rounded-lg p-1">
+              <button 
+                onClick={() => setLanguage("en")} 
+                className={`px-3 py-1 text-xs transition-colors rounded-md ${language === "en" ? "bg-slate-700 text-cyan-400 shadow-sm" : "text-slate-400 hover:text-slate-200"}`}
+              >
+                {t.common.en}
+              </button>
+              <button 
+                onClick={() => setLanguage("ru")} 
+                className={`px-3 py-1 text-xs transition-colors rounded-md ${language === "ru" ? "bg-slate-700 text-cyan-400 shadow-sm" : "text-slate-400 hover:text-slate-200"}`}
+              >
+                {t.common.ru}
+              </button>
+            </div>
+
+            <button className="md:hidden p-2 hover:bg-slate-800 rounded-lg" onClick={() => setMobileMenuOpen((s) => !s)}>
+              {mobileMenuOpen ? <X className="w-6 h-6 text-cyan-400" /> : <Menu className="w-6 h-6 text-cyan-400" />}
+            </button>
+          </div>
+        </nav>
+      </header>
 
       {mobileMenuOpen && (
         <div className="md:hidden bg-slate-900 border-b border-slate-800 fixed left-0 right-0 top-[73px] h-screen z-40 overflow-y-auto">

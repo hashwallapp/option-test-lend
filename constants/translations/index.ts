@@ -848,7 +848,7 @@ export const translations = {
       contractExplorer: "Обозреватель контрактов",
       onlineDexTrades: "Онлайн DEX сделки",
       tournamentsLeaderboard: "Турниры и лидеры",
-      productFeedback: "Продукт и обратная связь",
+      productFeedback: "Продукт и связь",
       aboutProject: "О проекте",
       feedbackSupport: "Обратная связь и поддержка",
       projectRoadmap: "Дорожная карта проекта",
