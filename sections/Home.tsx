@@ -37,7 +37,7 @@ const renderTitle = () => {
         The first DEX options
         <br /> 
         <span className="text-white">
-          on{' '}
+        on{' '}
           <span className="whitespace-nowrap bg-gradient-to-r from-cyan-400 via-magenta-400 to-cyan-400 bg-clip-text text-transparent">
             {t.hero.blockchain}
           </span>
