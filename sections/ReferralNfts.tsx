@@ -23,7 +23,6 @@ className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-
 {t.common.backToHome}
 </button>
 
-```
     {/* Header */}
     <div className="mb-8">
       <div className="flex items-center gap-3 mb-2">
