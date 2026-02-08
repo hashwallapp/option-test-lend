@@ -33,13 +33,15 @@ const Home: FC = () => {
     if (language === 'en') {
       return (
         <>
-          {t.hero.title}
-          {/* br заставляет "on TON blockchain" всегда начинаться с новой строки на десктопе */}
+          {/* На мобилках: The first DEX (ряд 1), options (ряд 2) */}
+          The first DEX <br className="sm:hidden" />
+          options
+          {/* На десктопе перенос перед "on" для двух строк */}
           <br className="hidden xl:block" />
-          <span className="text-white whitespace-nowrap">
-            <span className="xl:hidden">&nbsp;</span> {/* Пробел только для мобилок, где нет переноса */}
+          <span className="text-white">
+            <span className="xl:hidden">&nbsp;</span>
             on{' '}
-            <span className="bg-gradient-to-r from-cyan-400 via-magenta-400 to-cyan-400 bg-clip-text text-transparent">
+            <span className="whitespace-nowrap bg-gradient-to-r from-cyan-400 via-magenta-400 to-cyan-400 bg-clip-text text-transparent">
               {t.hero.blockchain}
             </span>
           </span>
@@ -110,17 +112,12 @@ const Home: FC = () => {
           <div className="flex-1 relative w-full h-80 lg:h-96 flex items-center justify-center xl:justify-end">
             <div className="absolute inset-0 bg-gradient-to-br from-purple-900/40 via-slate-950 to-magenta-900/40 rounded-full blur-3xl"></div>
             <div className="relative">
-              <video
-                src="/images/t4u-20purple-20nft.mp4"
-                autoPlay loop muted playsInline
-                className="w-72 h-72 lg:w-96 lg:h-96 object-contain drop-shadow-2xl rounded-2xl"
-              />
+              <video src="/images/t4u-20purple-20nft.mp4" autoPlay loop muted playsInline className="w-72 h-72 lg:w-96 lg:h-96 object-contain drop-shadow-2xl rounded-2xl" />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Carousel Section */}
       <section className="px-6 lg:px-12 py-8">
         <div className="max-w-4xl mx-auto">
           <div className="relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/40 backdrop-blur-sm">
