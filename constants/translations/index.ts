@@ -40,7 +40,7 @@ export const translations = {
     // Hero section from Home.tsx
     hero: {
       liveBadge: "💎 Live on TON Blockchain",
-      title: "The first DEX options on",
+      title: "The first DEX options",
       blockchain: "TON blockchain",
       subtitle: "Trade options on smart contracts. Fast. Reliable. No intermediaries.",
       
@@ -860,7 +860,7 @@ export const translations = {
     // Hero section from Home.tsx
     hero: {
       liveBadge: "💎 Работает на TON Blockchain",
-      title: "Первая DEX платформа опционов на",
+      title: "Первая DEX площадка опционов на",
       blockchain: "TON blockchain",
       subtitle: "Торговля опционами на смарт-контрактах. Быстро. Надежно. Без посредников.",
       
