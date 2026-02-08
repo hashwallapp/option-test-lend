@@ -29,38 +29,36 @@ const Home: FC = () => {
   const prev = () => setActive((s) => (s - 1 + slides.length) % slides.length)
   const next = () => setActive((s) => (s + 1) % slides.length)
 
-  const renderTitle = () => {
-    if (language === 'en') {
-      return (
-        <>
-          {/* На мобилках: The first DEX (ряд 1), options (ряд 2) */}
-          The first DEX <br className="sm:hidden" />
-          options
-          {/* На десктопе перенос перед "on" для двух строк */}
-          <br className="hidden xl:block" />
-          <span className="text-white">
-            <span className="xl:hidden">&nbsp;</span>
-            on{' '}
-            <span className="whitespace-nowrap bg-gradient-to-r from-cyan-400 via-magenta-400 to-cyan-400 bg-clip-text text-transparent">
-              {t.hero.blockchain}
-            </span>
-          </span>
-        </>
-      )
-    }
+const renderTitle = () => {
+  if (language === 'en') {
     return (
       <>
-        {t.hero.title}{' '}
-        <span className="whitespace-nowrap bg-gradient-to-r from-cyan-400 via-magenta-400 to-cyan-400 bg-clip-text text-transparent">
-          {t.hero.blockchain}
+        {/* На мобилках: "The first DEX options" в две строки, потом "on TON..." */}
+        The first DEX options
+        <br /> 
+        <span className="text-white">
+          on{' '}
+          <span className="whitespace-nowrap bg-gradient-to-r from-cyan-400 via-magenta-400 to-cyan-400 bg-clip-text text-transparent">
+            {t.hero.blockchain}
+          </span>
         </span>
       </>
     )
   }
+  // Исправляем русскую версию, чтобы не было дублей и лишних "on"
+  return (
+    <>
+      {t.hero.title}{' '}
+      <span className="inline-block bg-gradient-to-r from-cyan-400 via-magenta-400 to-cyan-400 bg-clip-text text-transparent">
+        {t.hero.blockchain}
+      </span>
+    </>
+  )
+}
 
   return (
     <>
-      <section className="relative px-6 lg:px-12 py-12 lg:py-16">
+     <section className="relative px-6 lg:px-12 py-12 lg:py-16">
         <div className="max-w-6xl mx-auto flex flex-col xl:flex-row items-center justify-between gap-10">
           
           <div className="flex-[2.5] z-10 w-full">
