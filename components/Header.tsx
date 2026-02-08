@@ -13,6 +13,7 @@ export default function Header() {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null)
   const dropdownTimeoutRef = useRef<number | null>(null)
 
+  // ... (navigationItems остаются без изменений)
   const navigationItems = [
     {
       label: t.nav.specifications,
@@ -22,7 +23,6 @@ export default function Header() {
         { label: t.nav.referralCommissions, href: "/referral-commissions" },
         { label: t.nav.poolCommissions, href: "/pool-commissions" },
         { label: t.nav.tradingLimits, href: "/trading-limits" },
-
       ],
     },
     {
@@ -42,19 +42,13 @@ export default function Header() {
         { label: t.nav.contractExplorer, href: "/contract-explorer" },
         { label: t.nav.onlineDexTrades, href: "/dex-trades-online" },
         { label: t.nav.tournamentsLeaderboard, href: "/tournaments-leaderboard" },
-
-
-
       ],
     },
   {
       label: t.nav.productFeedback,
       submenu: [
-            // { label: "TON Technology", href: "/ton-technology-usage" },
-            // { label: "Smart Contracts", href: "/smart-contracts" },
             { label: t.nav.aboutProject, href: "/about-project" },
             { label: t.nav.feedbackSupport, href: "/feedback-support" },
-            // { label: "Security Audits", href: "/security-audits" },
             { label: t.nav.projectRoadmap, href: "/project-roadmap" },
       ],
     },
@@ -63,10 +57,8 @@ export default function Header() {
       submenu: [
         { label: t.nav.referralCodes, href: "/referral-codes" },
         { label: t.nav.referralNfts, href: "/referral-nfts" },
-
       ],
     },
-
   ]
 
   const handleDropdownMouseEnter = (label: string) => {
@@ -88,12 +80,12 @@ export default function Header() {
   return (
     <>
    <header className="sticky top-0 z-50 w-full border-b border-slate-800/50 bg-slate-950/80 backdrop-blur-md">
-        {/* Изменено: используем container для идеального выравнивания с контентом страницы */}
-        <nav className="container mx-auto px-4 lg:px-8 h-[80px] flex items-center justify-between">
+        {/* Изменено: px-6 для мобилок, чтобы совпадать с Hero секцией */}
+        <nav className="max-w-6xl mx-auto px-6 lg:px-12 h-[80px] flex items-center justify-between">
           
-          {/* ЛОГОТИП: Обернут в блок с фиксированной шириной для стабильности */}
-          <div className="flex-shrink-0 min-w-[150px]">
-            <Link href="/" className="flex items-center gap-3 group w-fit ml-12">
+          {/* ЛОГОТИП: Убран ml-12, который сдвигал лого к центру на мобилках */}
+          <div className="flex-shrink-0">
+            <Link href="/" className="flex items-center gap-3 group w-fit">
               <img src="/images/ton4u-logo.png" alt="TON4U" className="w-8 h-8 md:w-9 md:h-9" />
               <span className="text-xl md:text-2xl font-bold tracking-tight bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
                 TON4U
@@ -101,18 +93,16 @@ export default function Header() {
             </Link>
           </div>
 
-          {/* НАВИГАЦИЯ: ml-4 или ml-8 даст отступ от логотипа, gap-0 так как ширина внутри ячеек */}
-          <div className="hidden md:flex items-center ml-12 lg:ml-12"> 
+          {/* НАВИГАЦИЯ: ml-8 для десктопа, чтобы не слипаться с логотипом */}
+          <div className="hidden md:flex items-center ml-8"> 
             {navigationItems.map((item) => (
               <div
                 key={item.label}
-                // Увеличено до 190px для гарантии одной строки и добавлено центрирование
                 className="relative w-[175px] lg:w-[165px] flex justify-center items-start"
                 onMouseEnter={() => handleDropdownMouseEnter(item.label)}
                 onMouseLeave={handleDropdownMouseLeave}
               >
                 <button className="flex items-center gap-2 px-2 py-2 text-[13px] lg:text-sm font-medium text-slate-300 hover:text-cyan-400 transition-all rounded-lg hover:bg-slate-800/40">
-                  {/* whitespace-nowrap ЗАПРЕЩАЕТ перенос строки */}
                   <span key={language} className="animate-in fade-in duration-300 whitespace-nowrap">
                     {item.label}
                   </span>
@@ -137,9 +127,9 @@ export default function Header() {
             ))}
           </div>
 
-          {/* ЯЗЫКИ И КНОПКИ */}
-          <div className="flex-shrink-0 min-w-[120px] flex justify-end">
-            <div className="hidden md:flex bg-slate-800/30 border border-slate-700 rounded-lg p-1">
+          {/* ЯЗЫКИ И КНОПКИ: min-w убран на мобилках, чтобы кнопка меню не смещалась */}
+          <div className="flex items-center justify-end">
+            <div className="hidden md:flex bg-slate-800/30 border border-slate-700 rounded-lg p-1 mr-4">
               <button 
                 onClick={() => setLanguage("en")} 
                 className={`px-3 py-1 text-xs transition-colors rounded-md ${language === "en" ? "bg-slate-700 text-cyan-400 shadow-sm" : "text-slate-400 hover:text-slate-200"}`}
@@ -154,17 +144,20 @@ export default function Header() {
               </button>
             </div>
 
-            <button className="md:hidden p-2 hover:bg-slate-800 rounded-lg" onClick={() => setMobileMenuOpen((s) => !s)}>
+            {/* Бургер меню */}
+            <button className="md:hidden p-2 -mr-2 hover:bg-slate-800 rounded-lg" onClick={() => setMobileMenuOpen((s) => !s)}>
               {mobileMenuOpen ? <X className="w-6 h-6 text-cyan-400" /> : <Menu className="w-6 h-6 text-cyan-400" />}
             </button>
           </div>
         </nav>
       </header>
-
+      
+      {/* ... (мобильное меню остается без изменений) */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-slate-900 border-b border-slate-800 fixed left-0 right-0 top-[73px] h-screen z-40 overflow-y-auto">
+        <div className="md:hidden bg-slate-900 border-b border-slate-800 fixed left-0 right-0 top-[80px] h-screen z-40 overflow-y-auto">
           <div className="flex flex-col p-6 gap-4">
-            <div className="flex bg-slate-800/30 border border-slate-700 rounded-lg p-1 gap-2 mb-4">
+             {/* Содержимое меню */}
+             <div className="flex bg-slate-800/30 border border-slate-700 rounded-lg p-1 gap-2 mb-4">
               <button onClick={() => setLanguage("en")} className={`flex-1 px-3 py-1 text-xs ${language === "en" ? "text-cyan-400" : "text-slate-400"}`}>{t.common.en}</button>
               <button onClick={() => setLanguage("ru")} className={`flex-1 px-3 py-1 text-xs ${language === "ru" ? "text-cyan-400" : "text-slate-400"}`}>{t.common.ru}</button>
             </div>
