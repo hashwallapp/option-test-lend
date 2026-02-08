@@ -34,9 +34,12 @@ const Home: FC = () => {
       return (
         <>
           {t.hero.title}
-          <span className="block xl:inline text-white">
-            &nbsp;on{' '}
-            <span className="whitespace-nowrap bg-gradient-to-r from-cyan-400 via-magenta-400 to-cyan-400 bg-clip-text text-transparent">
+          {/* br заставляет "on TON blockchain" всегда начинаться с новой строки на десктопе */}
+          <br className="hidden xl:block" />
+          <span className="text-white whitespace-nowrap">
+            <span className="xl:hidden">&nbsp;</span> {/* Пробел только для мобилок, где нет переноса */}
+            on{' '}
+            <span className="bg-gradient-to-r from-cyan-400 via-magenta-400 to-cyan-400 bg-clip-text text-transparent">
               {t.hero.blockchain}
             </span>
           </span>
@@ -75,7 +78,6 @@ const Home: FC = () => {
               </span>
             </p>
 
-            {/* Кнопки теперь имеют фиксированную ширину w-full на мобильных и w-60 на десктопе, чтобы не "прыгать" */}
             <div className="flex flex-col sm:flex-row gap-4">
               <Button className="bg-cyan-500 hover:bg-cyan-600 text-slate-950 font-semibold px-8 py-6 text-base flex items-center justify-center gap-2 group w-full sm:w-60">
                 <GlobeSvg />
