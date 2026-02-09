@@ -83,32 +83,26 @@ export default function Header() {
           {/* Основной контейнер, который теперь точно совпадает с Hero по ширине и центрированию */}
           <nav className="max-w-6xl mx-auto px-6 lg:px-12 h-[80px] flex items-center">
             
-                      {/* ЛОГОТИП: Теперь он просто стоит слева в контейнере */}
-          <div className="flex-shrink-0 flex items-center">
-            <Link 
-              href="/" 
-              /* -ml-4 на десктопе принудительно подвинет логотип влево, 
-                компенсируя паддинги и пустоту в самой картинке */
-              className="flex items-center gap-3 group -ml-1 md:-ml-14 transition-transform hover:scale-105"
-            >
-              <img 
-                src="/images/ton4u-logo.png" 
-                alt="TON4U" 
-                /* Добавляем scale-110, если логотип кажется мелким */
-                className="w-8 h-8 md:w-10 md:h-10 object-contain" 
-              />
-              <span className="text-xl md:text-2xl font-bold tracking-tight bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
-                TON4U
-              </span>
-            </Link>
-          </div>
+            {/* ЛОГОТИП: Теперь он просто стоит слева в контейнере */}
+            <div className="flex-shrink-0">
+              <Link href="/" className="flex items-center gap-3 group -ml-1 md:-ml-14">
+                <img 
+                  src="/images/ton4u-logo.png" 
+                  alt="TON4U" 
+                  className="w-8 h-8 md:w-9 md:h-9 object-contain" 
+                />
+                <span className="text-xl md:text-2xl font-bold tracking-tight bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
+                  TON4U
+                </span>
+              </Link>
+            </div>
 
           {/* НАВИГАЦИЯ: ml-8 для десктопа, чтобы не слипаться с логотипом */}
        <div className="hidden md:flex items-center ml-10 lg:ml-16">
             {navigationItems.map((item) => (
               <div
                 key={item.label}
-                className="relative w-[150px] lg:w-[165px] flex justify-center items-start"
+                className="relative w-[175px] lg:w-[165px] flex justify-center items-start"
                 onMouseEnter={() => handleDropdownMouseEnter(item.label)}
                 onMouseLeave={handleDropdownMouseLeave}
               >
