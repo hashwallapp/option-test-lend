@@ -666,7 +666,7 @@ export const translations = {
 
     // Dex Trades section
     dexTrades: {
-      title: "DEX Traders Online",
+      title: "DEX Trades Online",
       subtitle: "Real-time transparency for every move. Monitor the pulse of the exchange with full on-chain visibility and instant notifications.",
       dexHistoryTab: "DEX History Tab",
       dexHistoryDescription: "The dedicated DEX section in the trading terminal provides a comprehensive ledger of market activity. It displays all closed transactions from every user on the platform.",
@@ -1226,7 +1226,7 @@ export const translations = {
 
     // Dex Trades section
     dexTrades: {
-      title: "Трейдеры DEX онлайн",
+      title: "DEX Сделки онлайн",
       subtitle: "Прозрачность в реальном времени для каждого действия. Отслеживайте пульс биржи с полной видимостью в блокчейне и мгновенными уведомлениями.",
       dexHistoryTab: "Вкладка истории DEX",
       dexHistoryDescription: "Специальный раздел DEX в торговом терминале предоставляет исчерпывающий регистр рыночной активности. Он отображает все закрытые транзакции от каждого пользователя платформы.",
