@@ -22,9 +22,6 @@ export const metadata: Metadata = {
     description: "Professional options trading with the speed and security of TON",
     type: "website",
   },
-  alternates: {
-    canonical: "https://trade.ton4u.app",
-  },
   icons: {
     icon: [
       {
