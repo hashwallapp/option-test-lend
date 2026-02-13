@@ -1,9 +1,9 @@
 import { MetadataRoute } from 'next'
+import { locales } from '@/types/i18n'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://ton4u.app'
 
-  // Список всех твоих путей из папки app
   const routes = [
     '',
     '/about-project',
@@ -20,15 +20,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/referral-nfts',
     '/token-purchase',
     '/tournaments-leaderboard',
+    '/trading-commissions',
     '/trading-limits',
     '/trading-pairs',
     '/wallet-creation',
   ]
 
-  return routes.map((route) => ({
-    url: `${baseUrl}${route}`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly' as const,
-    priority: route === '' ? 1 : 0.8,
-  }))
+  const sitemapEntries = locales.flatMap((locale) =>
+    routes.map((route) => ({
+      url: `${baseUrl}/${locale}${route === '' ? '' : route}`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: route === '' ? 1 : 0.8,
+      alternates: {
+        languages: {
+          en: `${baseUrl}/en${route === '' ? '' : route}`,
+          ru: `${baseUrl}/ru${route === '' ? '' : route}`,
+        },
+      },
+    }))
+  )
+
+  return sitemapEntries
 }
