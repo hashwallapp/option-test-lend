@@ -4,6 +4,7 @@ import { locales } from '@/types/i18n'
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://ton4u.app'
 
+  // Список всех путей без префикса языка
   const routes = [
     '',
     '/about-project',
@@ -26,20 +27,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/wallet-creation',
   ]
 
-  const sitemapEntries = locales.flatMap((locale) =>
-    routes.map((route) => ({
-      url: `${baseUrl}/${locale}${route === '' ? '' : route}`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: route === '' ? 1 : 0.8,
-      alternates: {
-        languages: {
-          en: `${baseUrl}/en${route === '' ? '' : route}`,
-          ru: `${baseUrl}/ru${route === '' ? '' : route}`,
+  const sitemapEntries: MetadataRoute.Sitemap = []
+
+  // Генерируем записи для каждого языка
+  locales.forEach((locale) => {
+    routes.forEach((route) => {
+      sitemapEntries.push({
+        url: `${baseUrl}/${locale}${route}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly',
+        priority: route === '' ? 1.0 : 0.8,
+        // Помогаем Google понять связь между версиями страниц
+        alternates: {
+          languages: {
+            en: `${baseUrl}/en${route}`,
+            ru: `${baseUrl}/ru${route}`,
+            // 'x-default' указывает, какую версию показать, если язык юзера не en и не ru
+            'x-default': `${baseUrl}/en${route}`, 
+          },
         },
-      },
-    }))
-  )
+      })
+    })
+  })
 
   return sitemapEntries
 }
