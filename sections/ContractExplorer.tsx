@@ -4,6 +4,7 @@ import React, { FC } from 'react'
 import { ArrowLeft, Search, Eye, Share2, History, Trophy, ExternalLink, Zap } from 'lucide-react' 
 import { useRouter } from 'next/navigation'
 import { Translations } from "@/constants/translations"
+import router from 'next/router'
 
 interface ContractExplorerProps {
   translations: Translations
