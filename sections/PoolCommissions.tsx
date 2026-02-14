@@ -6,7 +6,8 @@ import { useRouter } from "next/navigation"
 import { Translations } from "@/constants/translations"
 
 interface PoolCommissionsProps {
-  translations: Translations
+  translations: Translations,
+   setCurrentView: (view: string) => void;
 }
 
 const PoolCommissions: FC<PoolCommissionsProps> = ({ translations: t, setCurrentView }) => {

@@ -5,7 +5,8 @@ import { FC } from "react"
 import { Translations } from "@/constants/translations"
 
 interface TokenPurchaseProps {
-  translations: Translations
+  translations: Translations,
+  setCurrentView: (view: string) => void;
 }
 
 const TokenPurchase: FC<TokenPurchaseProps> = ({ translations: t, setCurrentView }) => {

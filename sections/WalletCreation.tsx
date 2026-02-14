@@ -5,7 +5,8 @@ import { ArrowLeft, ChevronRight, Zap, Shield, Wallet, Download, CheckCircle, Ex
 import { Translations } from "@/constants/translations"
 
 interface WalletCreationProps {
-  translations: Translations
+  translations: Translations, 
+  setCurrentView: (view: string) => void;
 }
 
 const WalletCreation: FC<WalletCreationProps> = ({ translations: t, setCurrentView }) => {

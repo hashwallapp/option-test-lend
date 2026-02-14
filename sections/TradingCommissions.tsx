@@ -7,7 +7,8 @@ import { Translations } from "@/constants/translations"
 import { Button } from "@/components/ui/button"
 
 interface TradingCommissionsProps {
-  translations: Translations
+  translations: Translations,
+    setCurrentView: (view: string) => void;
 }
 
 const TradingCommissions: FC<TradingCommissionsProps> = ({ translations: t, setCurrentView }) => {

@@ -4,6 +4,7 @@ import React, { FC } from 'react'
 import { ArrowLeft } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { Translations } from "@/constants/translations"
+import router from 'next/router'
 
 interface LoginToPlatformProps {
   translations: Translations
