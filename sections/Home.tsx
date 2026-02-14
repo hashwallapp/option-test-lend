@@ -9,6 +9,14 @@ interface HomeProps {
   translations: Translations
 }
 
+  const handleWebVersion = () => {
+    window.open("https://trade.ton4u.app", "_blank")
+  }
+
+  const handleTelegramApp = () => {
+    window.open("https://t.me/ton4u_io_bot?startapp", "_blank")
+  }
+
 const Home: FC<HomeProps> = ({ translations: t }) => {
   const isEn = t.common.startTrading === "Start Trading"
   const language = isEn ? 'en' : 'ru'
@@ -85,11 +93,15 @@ const renderTitle = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button className="bg-cyan-500 hover:bg-cyan-600 text-slate-950 font-semibold px-8 py-6 text-base flex items-center justify-center gap-2 group w-full sm:w-60">
-                <GlobeSvg />
+                  <Button 
+                    onClick={handleWebVersion}
+                    className="bg-cyan-500 hover:bg-cyan-600 text-slate-950 font-semibold px-8 py-6 text-base flex items-center justify-center gap-2 group w-full sm:w-60 cursor-pointer"
+                  >
+                  <GlobeSvg />
                 <span className="whitespace-nowrap">{t.common.startTrading}</span>
-              </Button>
+                </Button>
               <Button
+              onClick={handleTelegramApp}
                 className="border border-cyan-500/50 px-8 py-6 text-base flex items-center justify-center gap-2 hover:bg-blue-600/20 transition-colors w-full sm:w-64"
                 style={{ backgroundColor: "#30A3E6", color: "white" }}
               >
