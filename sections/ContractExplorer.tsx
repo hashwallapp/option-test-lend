@@ -1,11 +1,15 @@
 "use client"
 
-import React from 'react' 
+import React, { FC } from 'react' 
 import { ArrowLeft, Search, Eye, Share2, History, Trophy, ExternalLink, Zap } from 'lucide-react' 
 import { useRouter } from 'next/navigation'
-import { useTranslations } from "@/hooks/useTranslations"
+import { Translations } from "@/constants/translations"
 
-const ContractExplorer = () => { const router = useRouter(); const t = useTranslations()
+interface ContractExplorerProps {
+  translations: Translations
+}
+
+const ContractExplorer: FC<ContractExplorerProps> = ({ translations: t }) => {
 
   const contractExplorer =  t.contractExplorerDetailed ||  t.contractExplorer
 

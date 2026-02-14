@@ -2,11 +2,15 @@
 
 import { ArrowLeft, MessageSquare, PlayCircle } from "lucide-react"
 import { useRouter } from "next/navigation"
-import { useTranslations } from "@/hooks/useTranslations"
+import { FC } from "react"
+import { Translations } from "@/constants/translations"
 
-const OpenTradeView =() => {
+interface OpenTradeViewProps {
+  translations: Translations
+}
+
+const OpenTradeView: FC<OpenTradeViewProps> = ({ translations: t }) => {
   const router = useRouter()
-  const t = useTranslations()
   
   // Use the detailed version which has all the properties your component needs
   const openTradeData = t.openTradeViewDetailed || t.openTradeView

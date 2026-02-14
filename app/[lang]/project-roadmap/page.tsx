@@ -5,9 +5,18 @@ import RoadmapTokenomics from "@/sections/RoadmapTokenomics"
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params
   const t = getTranslations(lang)
+  const path = '/project-roadmap'
+
   return {
     title: t.roadmapTokenomics.title + " | TON4U",
     description: t.roadmapTokenomics.subtitle,
+    alternates: {
+      canonical: `https://ton4u.app/${lang}${path}`,
+      languages: {
+        en: `https://ton4u.app/en${path}`,
+        ru: `https://ton4u.app/ru${path}`,
+      },
+    },
   }
 }
 

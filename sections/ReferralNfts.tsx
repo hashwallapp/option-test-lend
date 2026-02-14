@@ -1,13 +1,16 @@
 "use client"
 
-import React from 'react'
+import React, { FC } from 'react'
 import { ArrowLeft, Rocket, Layers, Gem, ShoppingBag, Zap, RefreshCw, Database } from 'lucide-react'
 import { useRouter } from 'next/navigation'
-import { useTranslations } from "@/hooks/useTranslations"
+import { Translations } from "@/constants/translations"
 
-const ReferralNFT = () => {
+interface ReferralNftsProps {
+  translations: Translations
+}
+
+const ReferralNfts: FC<ReferralNftsProps> = ({ translations: t }) => {
 const router = useRouter()
-const t = useTranslations()
 
 const referralNfts = t.referralNftsDetailed ||  t.referralNfts
 
@@ -132,4 +135,4 @@ className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-
 )
 }
 
-export default ReferralNFT
+export default ReferralNfts

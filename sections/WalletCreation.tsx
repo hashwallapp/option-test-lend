@@ -2,10 +2,13 @@
 
 import { FC } from "react"
 import { ArrowLeft, ChevronRight, Zap, Shield, Wallet, Download, CheckCircle, ExternalLink } from "lucide-react"
-import { useTranslations } from "@/hooks/useTranslations"
+import { Translations } from "@/constants/translations"
 
-const WalletCreation: FC<{ setCurrentView?: (v: string) => void }> = ({ setCurrentView }) => {
-  const t = useTranslations()
+interface WalletCreationProps {
+  translations: Translations
+}
+
+const WalletCreation: FC<WalletCreationProps> = ({ translations: t, setCurrentView }) => {
   
   const wallets = [
     {

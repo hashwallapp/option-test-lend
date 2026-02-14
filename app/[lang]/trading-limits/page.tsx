@@ -5,9 +5,18 @@ import TradingLimits from "@/sections/TradingLimits"
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params
   const t = getTranslations(lang)
+  const path = '/trading-limits'
+
   return {
     title: t.tradingLimits.title + " | TON4U",
     description: t.tradingLimits.subtitle,
+    alternates: {
+      canonical: `https://ton4u.app/${lang}${path}`,
+      languages: {
+        en: `https://ton4u.app/en${path}`,
+        ru: `https://ton4u.app/ru${path}`,
+      },
+    },
   }
 }
 

@@ -3,11 +3,14 @@
 import { useState, FC } from "react"
 import { ArrowLeft, Percent, Bell, ShieldCheck, Zap, Info } from "lucide-react"
 import { useRouter } from "next/navigation"
-import { useTranslations } from "@/hooks/useTranslations"
+import { Translations } from "@/constants/translations"
 import { Button } from "@/components/ui/button"
 
-const TradingCommissions: FC<{ setCurrentView?: (v: string) => void }> = ({ setCurrentView }) => {
-  const t = useTranslations()
+interface TradingCommissionsProps {
+  translations: Translations
+}
+
+const TradingCommissions: FC<TradingCommissionsProps> = ({ translations: t, setCurrentView }) => {
   const router = useRouter()
   const [nftUpgraded, setNftUpgraded] = useState(false)
 

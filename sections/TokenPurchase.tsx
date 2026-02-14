@@ -2,11 +2,13 @@
 
 import { ArrowLeft, CheckCircle2, ExternalLink } from "lucide-react"
 import { FC } from "react"
-import { useTranslations } from "@/hooks/useTranslations"
+import { Translations } from "@/constants/translations"
 
-const TokenPurchase: FC<{ setCurrentView?: (v: string) => void }> = ({ setCurrentView }) => {
-  const t = useTranslations()
+interface TokenPurchaseProps {
+  translations: Translations
+}
 
+const TokenPurchase: FC<TokenPurchaseProps> = ({ translations: t, setCurrentView }) => {
   const tokenPurchase = t.tokenPurchaseDetailed || t.tokenPurchase 
 
 

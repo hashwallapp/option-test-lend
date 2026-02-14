@@ -1,12 +1,15 @@
 "use client"
  
-import React from 'react' 
+import React, { FC } from 'react' 
 import { ArrowLeft, TrendingUp, Bell, Search, Globe } from 'lucide-react'
  import { useRouter } from 'next/navigation'
- import { useTranslations } from "@/hooks/useTranslations"
+ import { Translations } from "@/constants/translations"
 
-const TradingPairs = () => { 
-  const t = useTranslations()
+interface TradingPairsProps {
+  translations: Translations
+}
+
+const TradingPairs: FC<TradingPairsProps> = ({ translations: t }) => { 
   const router = useRouter()
 
 const pairs = [ { symbol: "BTC / USD", name: "Bitcoin" }, { symbol: "ETH / USD", name: "Ethereum" }, { symbol: "TON / USD", name: "Toncoin" }, { symbol: "SOL / USD", name: "Solana" }, { symbol: "SUI / USD", name: "Sui" }, { symbol: "XRP / USD", name: "Ripple" }, { symbol: "BNB / USD", name: "Binance Coin" }, { symbol: "DOGE / USD", name: "Dogecoin" }, { symbol: "LTC / USD", name: "Litecoin" }, { symbol: "DASH / USD", name: "Dash" }, { symbol: "ASTER / USD", name: "Aster" }, ]

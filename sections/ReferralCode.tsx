@@ -1,14 +1,17 @@
 "use client"
 
-import React from 'react'
+import React, { FC } from 'react'
 import { ArrowLeft, Users, CreditCard, TrendingUp, Copy, Shield, Check, ExternalLink, ShieldCheck } from 'lucide-react'
 import { useRouter } from 'next/navigation'
-import { useTranslations } from "@/hooks/useTranslations"
+import { Translations } from "@/constants/translations"
 import ReferralNFT from './ReferralNfts'
 
-const ReferralSystem = () => {
-const router = useRouter(); 
-const t = useTranslations()
+interface ReferralCodeProps {
+  translations: Translations
+}
+
+const ReferralCode: FC<ReferralCodeProps> = ({ translations: t }) => {
+const router = useRouter();
 
 const referralCodeData = t.referralCodeDetailed ||  t.referralCode
 
@@ -147,4 +150,4 @@ className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-
 )
 }
 
-export default ReferralSystem
+export default ReferralCode

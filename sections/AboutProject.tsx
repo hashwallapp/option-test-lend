@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { FC } from "react";
 import {
   ArrowLeft,
   BarChart3,
@@ -17,10 +17,13 @@ import {
   History,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useTranslations } from "@/hooks/useTranslations";
+import { Translations } from "@/constants/translations";
 
-const AboutProject: React.FC = () => {
-  const t = useTranslations();
+interface AboutProjectProps {
+  translations: Translations
+}
+
+const AboutProject: FC<AboutProjectProps> = ({ translations: t }) => {
   const router = useRouter();
 
   const earningDirections = [

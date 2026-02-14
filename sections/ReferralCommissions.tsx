@@ -2,10 +2,13 @@
  
 import { useRouter } from "next/navigation"
 import { FC } from "react"
-import { useTranslations } from "@/hooks/useTranslations"
+import { Translations } from "@/constants/translations"
 
-const ReferralCommissions = () => {
-  const t = useTranslations()
+interface ReferralCommissionsProps {
+  translations: Translations
+}
+
+const ReferralCommissions: FC<ReferralCommissionsProps> = ({ translations: t }) => {
   const router = useRouter()
   
   return (

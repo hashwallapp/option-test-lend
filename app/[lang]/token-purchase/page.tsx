@@ -5,9 +5,18 @@ import TokenPurchase from "@/sections/TokenPurchase"
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params
   const t = getTranslations(lang)
+  const path = '/token-purchase'
+
   return {
     title: t.tokenPurchase.title + " | TON4U",
     description: t.tokenPurchase.subtitle,
+    alternates: {
+      canonical: `https://ton4u.app/${lang}${path}`,
+      languages: {
+        en: `https://ton4u.app/en${path}`,
+        ru: `https://ton4u.app/ru${path}`,
+      },
+    },
   }
 }
 

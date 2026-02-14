@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { FC } from "react";
 import {
     ArrowLeft,
     BarChart3,
@@ -22,11 +22,14 @@ import {
     Target,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useTranslations } from "@/hooks/useTranslations";
+import { Translations } from "@/constants/translations";
 
-const TournamentsLeaderboard: React.FC = () => {
+interface TournamentsLeaderboardProps {
+  translations: Translations
+}
+
+const TournamentsLeaderboard: FC<TournamentsLeaderboardProps> = ({ translations: t }) => {
     const router = useRouter();
-    const t = useTranslations();
 
     const tournamentsLeaderboard = t.tournamentsLeaderboardDetailed ||  t.tournamentsLeaderboard
 

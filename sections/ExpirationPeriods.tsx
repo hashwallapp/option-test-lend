@@ -1,8 +1,13 @@
 "use client"
  
-import { useTranslations } from "@/hooks/useTranslations"
-export default function ExpirationPeriods() {
-  const t = useTranslations()
+import { FC } from "react"
+import { Translations } from "@/constants/translations"
+
+interface ExpirationPeriodsProps {
+  translations: Translations
+}
+
+export default function ExpirationPeriods({ translations: t }: ExpirationPeriodsProps) {
   return (
     <div className="px-6 lg:px-12 py-6">
       <div className="max-w-6xl mx-auto">

@@ -1,13 +1,15 @@
 "use client"
 
-import React from 'react'
+import React, { FC } from 'react'
 import { ArrowLeft } from 'lucide-react'
 import { useRouter } from 'next/navigation'
-import { useTranslations } from "@/hooks/useTranslations"
+import { Translations } from "@/constants/translations"
 
-const LoginToPlatform = () => {
-    const router = useRouter()
-    const t = useTranslations()
+interface LoginToPlatformProps {
+  translations: Translations
+}
+
+const LoginToPlatform: FC<LoginToPlatformProps> = ({ translations: t }) => {
     
     // Use the detailed version which has all the properties your component needs
     const loginData = t.loginToPlatformDetailed

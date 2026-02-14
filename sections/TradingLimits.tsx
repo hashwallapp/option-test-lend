@@ -3,12 +3,15 @@
 import { ArrowLeft, Shield, TrendingUp, AlertCircle } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { FC } from "react"
-import { useTranslations } from "@/hooks/useTranslations"
+import { Translations } from "@/constants/translations"
 
-const TradingLimits = () => {
+interface TradingLimitsProps {
+  translations: Translations
+}
+
+const TradingLimits: FC<TradingLimitsProps> = ({ translations: t }) => {
 
     const router = useRouter()
-    const t = useTranslations()
 
     const tradingLimits = t.tradingLimitsDetailed || t.tradingLimits
 

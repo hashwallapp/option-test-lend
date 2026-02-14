@@ -1,12 +1,16 @@
 "use client"
 
-import React from 'react' 
+import React, { FC } from 'react' 
 import { ArrowLeft, MessageSquare, Mail, Users, ExternalLink, ShieldCheck } from 'lucide-react'
  import { useRouter } from 'next/navigation' 
  import Image from 'next/image'
-import { useTranslations } from "@/hooks/useTranslations"
+import { Translations } from "@/constants/translations"
 
-const FeedbackSupport = () => { const router = useRouter(); const t = useTranslations()
+interface FeedbackSupportProps {
+  translations: Translations
+}
+
+const FeedbackSupport: FC<FeedbackSupportProps> = ({ translations: t }) => { const router = useRouter()
 
 return ( <div className="min-h-screen bg-[#0a0a0f]"> <div className="max-w-6xl mx-auto px-4 py-8"> {/* Navigation */} <button onClick={() => router.back()} className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors mb-6" > <ArrowLeft className="w-4 h-4" /> 
  {t.common.backToHome} </button>

@@ -3,14 +3,14 @@
 import { Button } from "@/components/ui/button"
 import GlobeSvg from "@/components/icons/GlobeSvg"
 import { FC, useEffect, useRef, useState } from "react"
-import { useTranslations } from "@/hooks/useTranslations"
+import { Translations } from "@/constants/translations"
 
-const Home: FC = () => {
-  const t = useTranslations()
-  
-  // Определяем язык по косвенному признаку из объекта переводов 
-  // (если в common.en лежит "EN", значит мы на английском)
-const isEn = t.common.startTrading === "Start Trading"
+interface HomeProps {
+  translations: Translations
+}
+
+const Home: FC<HomeProps> = ({ translations: t }) => {
+  const isEn = t.common.startTrading === "Start Trading"
   const language = isEn ? 'en' : 'ru'
   
   

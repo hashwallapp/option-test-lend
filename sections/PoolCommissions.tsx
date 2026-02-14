@@ -3,10 +3,13 @@
 import { ChevronDown, ArrowLeft } from "lucide-react"
 import { FC } from "react"
 import { useRouter } from "next/navigation"
-import { useTranslations } from "@/hooks/useTranslations"
+import { Translations } from "@/constants/translations"
 
-const PoolCommissions: FC<{ setCurrentView?: (v: string) => void }> = ({ setCurrentView }) => {
-  const t = useTranslations()
+interface PoolCommissionsProps {
+  translations: Translations
+}
+
+const PoolCommissions: FC<PoolCommissionsProps> = ({ translations: t, setCurrentView }) => {
   const router = useRouter()
 
   const handleBack = () => {

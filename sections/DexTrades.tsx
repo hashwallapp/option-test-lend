@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { FC } from "react";
 import { 
   ArrowLeft, 
   Activity, 
@@ -13,11 +13,14 @@ import {
   CheckCircle2 
 } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useTranslations } from "@/hooks/useTranslations";
+import { Translations } from "@/constants/translations";
 
-const DexTrades: React.FC = () => {
+interface DexTradesProps {
+  translations: Translations
+}
+
+const DexTrades: FC<DexTradesProps> = ({ translations: t }) => {
   const router = useRouter();
-  const t = useTranslations();
 
   return (
     <div className="min-h-screen bg-[#0a0a0f] text-slate-300">

@@ -5,9 +5,18 @@ import ReferralCommissions from "@/sections/ReferralCommissions"
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params
   const t = getTranslations(lang)
+  const path = '/referral-commissions'
+
   return {
     title: t.referralCommissions.title + " | TON4U",
     description: t.referralCommissions.subtitle,
+    alternates: {
+      canonical: `https://ton4u.app/${lang}${path}`,
+      languages: {
+        en: `https://ton4u.app/en${path}`,
+        ru: `https://ton4u.app/ru${path}`,
+      },
+    },
   }
 }
 

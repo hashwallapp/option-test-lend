@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { FC } from "react";
 import {
   ArrowLeft,
   Flame,
@@ -15,11 +15,15 @@ import {
   Trophy
 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { Translations } from "@/constants/translations";
 import { useTranslations } from "@/hooks/useTranslations";
 
-const RoadmapTokenomics: React.FC = () => {
+interface RoadmapTokenomicsProps {
+  translations: Translations
+}
+
+const RoadmapTokenomics: FC<RoadmapTokenomicsProps> = ({ translations: t }) => {
   const router = useRouter();
-  const t = useTranslations();
 
    const roadmapTokenomics = t.roadmapTokenomicsDetailed ||  t.roadmapTokenomics
 
