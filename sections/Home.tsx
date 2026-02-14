@@ -4,11 +4,15 @@ import { Button } from "@/components/ui/button"
 import GlobeSvg from "@/components/icons/GlobeSvg"
 import { FC, useEffect, useRef, useState } from "react"
 import { useTranslations } from "@/hooks/useTranslations"
-import { useLanguage } from "@/context/LanguageContext"
 
 const Home: FC = () => {
   const t = useTranslations()
-  const { language } = useLanguage()
+  
+  // Определяем язык по косвенному признаку из объекта переводов 
+  // (если в common.en лежит "EN", значит мы на английском)
+const isEn = t.common.startTrading === "Start Trading"
+  const language = isEn ? 'en' : 'ru'
+  
   
   const [active, setActive] = useState<number>(0)
   const autoplayRef = useRef<number | null>(null)
@@ -30,14 +34,26 @@ const Home: FC = () => {
   const next = () => setActive((s) => (s + 1) % slides.length)
 
 const renderTitle = () => {
-  if (language === 'en') {
+    // Если мы на русском (isEn === false)
+    if (!isEn) {
+      return (
+        <>
+          {t.hero.title}
+          {' '}
+          <span className="inline-block bg-gradient-to-r from-cyan-400 via-magenta-400 to-cyan-400 bg-clip-text text-transparent">
+            {t.hero.blockchain}
+          </span>
+        </>
+      )
+    }
+
+    // Если мы на английском
     return (
       <>
-        {/* На мобилках: "The first DEX options" в две строки, потом "on TON..." */}
         The first DEX options
         <br /> 
         <span className="text-white">
-        on{' '}
+          {'on '}
           <span className="whitespace-nowrap bg-gradient-to-r from-cyan-400 via-magenta-400 to-cyan-400 bg-clip-text text-transparent">
             {t.hero.blockchain}
           </span>
@@ -45,16 +61,6 @@ const renderTitle = () => {
       </>
     )
   }
-  // Исправляем русскую версию, чтобы не было дублей и лишних "on"
-  return (
-    <>
-      {t.hero.title}{' '}
-      <span className="inline-block bg-gradient-to-r from-cyan-400 via-magenta-400 to-cyan-400 bg-clip-text text-transparent">
-        {t.hero.blockchain}
-      </span>
-    </>
-  )
-}
 
   return (
     <>
