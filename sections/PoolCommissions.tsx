@@ -7,7 +7,7 @@ import { Translations } from "@/constants/translations"
 
 interface PoolCommissionsProps {
   translations: Translations,
-   setCurrentView: (view: string) => void;
+   setCurrentView?: (view: string) => void;
 }
 
 const PoolCommissions: FC<PoolCommissionsProps> = ({ translations: t, setCurrentView }) => {
