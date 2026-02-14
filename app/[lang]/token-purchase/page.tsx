@@ -23,7 +23,5 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
 export default async function Page({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params
   const t = getTranslations(lang)
-  return <TokenPurchase translations={t} setCurrentView={function (view: string): void {
-    throw new Error("Function not implemented.")
-  } } />
+  return <TokenPurchase translations={t} />
 }
