@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 
 interface TradingCommissionsProps {
   translations: Translations,
-    setCurrentView: (view: string) => void;
+    setCurrentView?: (view: string) => void;
 }
 
 const TradingCommissions: FC<TradingCommissionsProps> = ({ translations: t, setCurrentView }) => {
