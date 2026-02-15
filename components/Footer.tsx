@@ -49,12 +49,12 @@ export default function Footer() {
           <h4 className="font-semibold mb-4">{t.hero.footer.resources}</h4>
           <ul className="space-y-2 text-sm text-slate-400">
             <li>
-              <a href="/about" className="hover:text-magenta-400 transition-colors">
+              <a href="/open-trade" className="hover:text-magenta-400 transition-colors">
                 {t.hero.footer.documentation}
               </a>
             </li>
             <li>
-              <a href="#" className="hover:text-magenta-400 transition-colors">
+              <a href="https://t.me/ton4you_support" className="hover:text-magenta-400 transition-colors">
                 {t.hero.footer.support}
               </a>
             </li>
@@ -69,7 +69,7 @@ export default function Footer() {
           <h4 className="font-semibold mb-4">{t.hero.footer.community}</h4>
           <ul className="space-y-2 text-sm text-slate-400">
             <li>
-              <a href="#" className="hover:text-cyan-400 transition-colors">
+              <a href="https://x.com/ton4uofficial" className="hover:text-cyan-400 transition-colors">
                 {t.hero.footer.twitter}
               </a>
             </li>
@@ -79,7 +79,7 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a href="#" className="hover:text-cyan-400 transition-colors">
+              <a href="https://t.me/option4you" className="hover:text-cyan-400 transition-colors">
                 {t.hero.footer.telegram}
               </a>
             </li>
