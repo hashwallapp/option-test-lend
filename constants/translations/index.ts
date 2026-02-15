@@ -563,6 +563,7 @@ export const translations = {
         dexChat: "DEX Chat",
         information: "Information",
         volumeRecords: "Volume Records",
+        youtube: "YouTube Channel",
       },
     },
 

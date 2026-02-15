@@ -15,6 +15,7 @@ import {
   MessageSquare,
   Zap,
   History,
+  Video
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { Translations } from "@/constants/translations";
@@ -79,6 +80,12 @@ const AboutProject: FC<AboutProjectProps> = ({ translations: t }) => {
       handle: "@Max_order_t4u",
       url: "https://t.me/Max_order_t4u",
       icon: <History className="w-4 h-4" />,
+    },
+      {
+      label: t.aboutProject.social.youtube,
+      handle: "@TON4YOU",
+      url: "https://www.youtube.com/@TON4YOU",
+      icon: <Video className="w-4 h-4" />,
     },
   ];
 

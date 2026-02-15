@@ -62,7 +62,7 @@ return ( <div className="min-h-screen bg-[#0a0a0f]"> <div className="max-w-6xl m
           </p>
           
           <a 
-            href="[https://t.me/ton4you_support](https://t.me/ton4you_support)" 
+            href="https://t.me/ton4you_support" 
             target="_blank" 
             rel="noopener noreferrer"
             className="w-full bg-cyan-500 hover:bg-cyan-400 text-black font-bold py-3 px-6 rounded-xl transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(6,182,212,0.2)]"
