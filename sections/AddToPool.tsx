@@ -4,6 +4,8 @@ import React from 'react'
 import { ArrowLeft, PlusCircle, ShieldCheck, PieChart, Info, LayoutDashboard, ExternalLink } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 // Импортируем тип ваших переводов
+import { Button } from "@/components/ui/button"
+
 import { Translations } from "@/constants/translations"
 
 // 1. Описываем интерфейс входящих данных
@@ -11,6 +13,9 @@ interface AddToPoolProps {
   translations: Translations
 }
 
+ const handleTradeValuts = () => {
+    window.open("https://trade.ton4u.app/vaults", "_blank")
+  }
 // 2. Принимаем translations как проп
 const AddToPool: React.FC<AddToPoolProps> = ({ translations: t }) => {
   const router = useRouter()
@@ -118,8 +123,8 @@ const AddToPool: React.FC<AddToPoolProps> = ({ translations: t }) => {
 
               <div className="mt-8">
                 <button 
-                  onClick={() => router.push('/vaults')}
-                  className="w-full bg-cyan-500 hover:bg-cyan-400 text-black font-bold py-3 px-6 rounded-xl transition-all flex items-center justify-center gap-2"
+                onClick={handleTradeValuts}
+                className="w-full bg-cyan-500 hover:bg-cyan-400 text-black font-bold py-3 px-6 rounded-xl transition-all flex items-center justify-center gap-2"
                 >
                   {addToPool.goToVaults}
                   <ExternalLink className="w-4 h-4" />

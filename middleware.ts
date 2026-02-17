@@ -54,11 +54,12 @@ export function middleware(request: NextRequest) {
     locale = getLocaleFromHeaders(request)
   }
 
-  const response = NextResponse.redirect(
+ const response = NextResponse.redirect(
     new URL(
       `/${locale}${pathname === '/' ? '' : pathname}`,
       request.url
-    )
+    ),
+    { status: 301 } // Добавляем статус постоянного редиректа
   )
 
   if (!getLocaleFromCookie(request)) {
