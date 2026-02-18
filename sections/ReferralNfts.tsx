@@ -14,6 +14,12 @@ const router = useRouter()
 
 const referralNfts = t.referralNftsDetailed ||  t.referralNfts
 
+  const handleOpenNftMint = () => {
+    window.open("https://trade.ton4u.app/nfts", "_blank")
+  }
+
+ 
+
 return (
 <div className="min-h-screen bg-[#0a0a0f]">
 <div className="max-w-6xl mx-auto px-4 py-8">
@@ -106,7 +112,9 @@ className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-
         </div>
 
         <div className="mt-8">
-          <button className="w-full bg-cyan-500 hover:bg-cyan-400 text-black font-bold py-3 px-6 rounded-xl transition-all flex items-center justify-center gap-2">
+          <button 
+          onClick={handleOpenNftMint}
+          className="w-full bg-cyan-500 hover:bg-cyan-400 text-black font-bold py-3 px-6 rounded-xl transition-all flex items-center justify-center gap-2">
             <Rocket className="w-4 h-4" />
             { referralNfts.mintNftNow}
           </button>
