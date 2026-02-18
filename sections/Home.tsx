@@ -14,7 +14,7 @@ interface HomeProps {
   }
 
   const handleTelegramApp = () => {
-    window.open("https://t.me/ton4u_io_bot?startapp", "_blank")
+    window.open("https://t.me/ton4u_io_bot?startapp=DIRTYTRADER", "_blank")
   }
 
 const Home: FC<HomeProps> = ({ translations: t }) => {

@@ -53,13 +53,20 @@ export function middleware(request: NextRequest) {
   if (!locale) {
     locale = getLocaleFromHeaders(request)
   }
-
- const response = NextResponse.redirect(
+/*
+  const response = NextResponse.redirect(
+    new URL(
+      `/${locale}${pathname === '/' ? '' : pathname}`,
+      request.url
+    )
+  )
+*/
+  const response = NextResponse.redirect(
     new URL(
       `/${locale}${pathname === '/' ? '' : pathname}`,
       request.url
     ),
-    { status: 301 } // Добавляем статус постоянного редиректа
+    { status: 301 }
   )
 
   if (!getLocaleFromCookie(request)) {

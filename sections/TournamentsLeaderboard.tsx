@@ -28,6 +28,12 @@ interface TournamentsLeaderboardProps {
   translations: Translations
 }
 
+
+  const handlOpenLeaderboard = () => {
+    window.open("https://trade.ton4u.app/leaders", "_blank")
+  }
+
+
 const TournamentsLeaderboard: FC<TournamentsLeaderboardProps> = ({ translations: t }) => {
     const router = useRouter();
 
@@ -160,10 +166,14 @@ const TournamentsLeaderboard: FC<TournamentsLeaderboardProps> = ({ translations:
                     <div className="lg:col-span-2 flex flex-col gap-4">
                         <div className="bg-slate-900/40 border border-slate-800 rounded-2xl p-6 flex-1 flex flex-col justify-center">
                             <p className="text-xs text-slate-500 uppercase tracking-widest mb-2 font-bold">Terminal Section</p>
-                            <h4 className="text-lg font-bold text-white mb-4">"Leaders" Tab</h4>
-                            <p className="text-sm text-slate-400 mb-6">Access the full rankings directly within the trading terminal interface.</p>
-                            <button className="flex items-center justify-between w-full p-3 bg-cyan-500/10 border border-cyan-500/20 rounded-xl text-cyan-400 font-bold text-sm hover:bg-cyan-500/20 transition-all">
-                                Open Terminal
+                            <h4 className="text-lg font-bold text-white mb-4"> { tournamentsLeaderboard.leadersTab}
+
+                            </h4>
+                            <p className="text-sm text-slate-400 mb-6">{tournamentsLeaderboard.accessFullRankings}</p>
+                            <button 
+                            onClick={handlOpenLeaderboard}
+                            className="flex items-center justify-between w-full p-3 bg-cyan-500/10 border border-cyan-500/20 rounded-xl text-cyan-400 font-bold text-sm hover:bg-cyan-500/20 transition-all">
+                            { tournamentsLeaderboard.openTerminal}
                                 <ChevronRight className="w-4 h-4" />
                             </button>
                         </div>

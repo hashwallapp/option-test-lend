@@ -15,7 +15,7 @@ export default function Footer() {
           </div>
           <p className="text-sm text-slate-500 mb-4">{t.hero.footer.tagline}</p>
           <a
-            href="https://ston.fi"
+            href="https://app.ston.fi/swap?ft=TON&tt=T4U&chartVisible=true&chartInterval=6m"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-700 hover:border-cyan-500 hover:bg-slate-900/50 transition-all"

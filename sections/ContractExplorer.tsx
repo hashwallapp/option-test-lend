@@ -107,7 +107,7 @@ return ( <div className="min-h-screen bg-[#0a0a0f]"> <div className="max-w-6xl m
             </p>
             
             <a 
-              href="#" 
+              href="https://tonviewer.com/EQDiCt_C2X2cWjHg6foV7Szkd2Qn_fv6bx6W2ij9EHT6qYdm" 
               target="_blank" 
               rel="noopener noreferrer"
               className="w-full bg-slate-950 border border-slate-700 hover:border-cyan-500/50 p-4 rounded-xl flex items-center justify-between group transition-all"
