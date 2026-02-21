@@ -135,7 +135,7 @@ const switchLanguage = (newLang: 'en' | 'ru') => {
           </div>
 
           <div className="flex items-center ml-auto">
-            <div className="hidden md:flex bg-slate-800/30 border border-slate-700 rounded-lg p-1 mr-4">
+            <div className="hidden md:flex bg-slate-800/30 border border-slate-700 rounded-lg p-1 ml-10">
               <button 
                 onClick={() => switchLanguage("en")} 
                 className={`px-3 py-1 text-xs rounded-md ${language === "en" ? "bg-slate-700 text-cyan-400" : "text-slate-400 hover:text-slate-200"}`}

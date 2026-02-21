@@ -1,168 +1,121 @@
 "use client"
-
-import { ArrowLeft, CheckCircle2, ExternalLink } from "lucide-react"
+ 
 import { FC } from "react"
+import { ArrowLeft, Clock } from "lucide-react"
+import { useRouter } from "next/navigation"
 import { Translations } from "@/constants/translations"
 
-interface TokenPurchaseProps {
-  translations: Translations,
-  setCurrentView?: (view: string) => void;
+interface ExpirationPeriodsProps {
+  translations: Translations
+  setCurrentView?: (view: string) => void
 }
 
-const TokenPurchase: FC<TokenPurchaseProps> = ({ translations: t, setCurrentView }) => {
-  const tokenPurchase = t.tokenPurchaseDetailed || t.tokenPurchase 
+export default function ExpirationPeriods({ translations: t, setCurrentView }: ExpirationPeriodsProps) {
+  const router = useRouter()
 
+  const handleBack = () => {
+    if (setCurrentView) {
+      setCurrentView("home")
+    } else {
+      router.back()
+    }
+  }
 
   return (
-    <div className="px-6 lg:px-12 py-6">
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
+    <div className="min-h-screen bg-[#0a0a0f]">
+      <div className="max-w-6xl mx-auto px-4 py-8">
+        
+        {/* Navigation */}
         <button
-          onClick={() => {
-            setCurrentView?.("home")
-          }}
-          className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors mb-4"
+          onClick={handleBack}
+          className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors mb-6"
         >
           <ArrowLeft className="w-4 h-4" />
           {t.common.backToHome}
         </button>
 
-        <div className="mb-4">
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent mb-1">
-            { tokenPurchase.title}
+        {/* Header */}
+        <div className="mb-6">
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent mb-2">
+            {t.expirationPeriods.title}
           </h1>
-          <p className="text-slate-400 text-sm">{ tokenPurchase.subtitle}</p>
+          <p className="text-slate-400 text-sm">{t.expirationPeriods.subtitle}</p>
         </div>
 
         {/* Main Content Grid */}
-        <div className="grid lg:grid-cols-2 gap-6">
-          {/* Left Column - Instructions */}
-          <div className="space-y-4">
-            {/* Step 1 */}
-            <div className="bg-slate-900/50 border border-slate-800 rounded-xl p-4">
-              <div className="flex items-start gap-3">
-                <div className="flex-shrink-0 w-8 h-8 bg-cyan-500/20 border border-cyan-500/30 rounded-lg flex items-center justify-center text-cyan-400 font-bold text-sm">
-                  1
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-base font-semibold text-white mb-1">{ tokenPurchase.prerequisites}</h3>
-                  <p className="text-slate-300 text-sm leading-relaxed">
-                    { tokenPurchase.prerequisitesDescription}
-                  </p>
-                </div>
-              </div>
+        <div className="grid lg:grid-cols-2 gap-8">
+          {/* Left Column - Table */}
+          <div className="bg-slate-900/50 border border-slate-800 rounded-xl p-4">
+            <h2 className="text-lg font-semibold mb-4 text-cyan-400">{t.expirationPeriods.periodsAndSpreads}</h2>
+
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr className="border-b border-slate-800">
+                    <th className="text-left py-2 px-3 text-sm font-semibold text-slate-300">{t.expirationPeriods.period}</th>
+                    <th className="text-right py-2 px-3 text-sm font-semibold text-slate-300">{t.expirationPeriods.spread}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    { period: "2.5 min", spread: "0.01%" },
+                    { period: "5 min", spread: "0%" },
+                    { period: "15 min", spread: "0.03%" },
+                    { period: "30 min", spread: "0.03%" },
+                    { period: "1 hour", spread: "0.05%" },
+                    { period: "4 hours", spread: "0.09%" },
+                    { period: "6 hours", spread: "0.10%" },
+                    { period: "12 hours", spread: "0.17%" },
+                    { period: "1 day", spread: "0.23%" },
+                    { period: "3 days", spread: "0.60%" },
+                    { period: "7 days", spread: "1.2%" },
+                    { period: "1 month", spread: "3.0%" },
+                  ].map((row, index) => (
+                    <tr key={index} className="border-b border-slate-800/50 hover:bg-slate-800/30 transition-colors">
+                      <td className="py-1.5 px-3 text-sm text-slate-300">{row.period}</td>
+                      <td className="py-1.5 px-3 text-sm text-right font-mono text-cyan-400">{row.spread}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
 
-            {/* Step 2 */}
-            <div className="bg-slate-900/50 border border-slate-800 rounded-xl p-4">
-              <div className="flex items-start gap-3">
-                <div className="flex-shrink-0 w-8 h-8 bg-cyan-500/20 border border-cyan-500/30 rounded-lg flex items-center justify-center text-cyan-400 font-bold text-sm">
-                  2
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-base font-semibold text-white mb-1">{ tokenPurchase.swapViaStonfi}</h3>
-                  <p className="text-slate-300 text-sm leading-relaxed">
-                    { tokenPurchase.swapViaStonfiDescription}
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Step 3 */}
-            <div className="bg-slate-900/50 border border-slate-800 rounded-xl p-4">
-              <div className="flex items-start gap-3">
-                <div className="flex-shrink-0 w-8 h-8 bg-cyan-500/20 border border-cyan-500/30 rounded-lg flex items-center justify-center text-cyan-400 font-bold text-sm">
-                  3
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-base font-semibold text-white mb-1">{ tokenPurchase.quickAccess}</h3>
-                  <p className="text-slate-300 text-sm leading-relaxed">
-                    { tokenPurchase.quickAccessDescription}
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Verified Token Notice */}
-            <div className="bg-gradient-to-r from-green-500/10 to-emerald-500/10 border border-green-500/30 rounded-xl p-4">
-              <div className="flex items-center gap-3">
-                <div className="bg-green-500/20 rounded-full p-2">
-                  <CheckCircle2 className="w-5 h-5 text-green-400" />
-                </div>
-                <div>
-                  <h3 className="text-base font-semibold text-white">{ tokenPurchase.verifiedToken}</h3>
-                  <p className="text-green-300/80 text-sm">
-                    {tokenPurchase.verifiedTokenDescription}
-                  </p>
-                </div>
-              </div>
+            <div className="mt-4 p-3 bg-cyan-500/10 border border-cyan-500/30 rounded-lg">
+              <p className="text-xs text-cyan-300">
+                <span className="font-semibold">{t.expirationPeriods.note}:</span> {t.expirationPeriods.spreadNote}
+              </p>
             </div>
           </div>
 
-          {/* Right Column - CTA */}
-          <div className="flex flex-col justify-center items-center bg-slate-900/50 border border-slate-800 rounded-xl p-6">
-            <div className="text-center mb-6">
-              <div className="w-20 h-20 mx-auto mb-4 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-2xl border border-cyan-500/30 flex items-center justify-center">
-                <svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-12 h-12">
-                  <path
-                    d="M28 56C43.464 56 56 43.464 56 28C56 12.536 43.464 0 28 0C12.536 0 0 12.536 0 28C0 43.464 12.536 56 28 56Z"
-                    fill="#0098EA"
-                  />
-                  <path
-                    d="M37.5603 15.6277H18.4386C14.9228 15.6277 12.6944 19.4202 14.4632 22.4861L26.2644 42.9409C27.0345 44.2765 28.9644 44.2765 29.7345 42.9409L41.5765 22.4861C43.3045 19.4202 41.0761 15.6277 37.5611 15.6277H37.5603ZM26.2937 36.8068L23.6096 31.6507L17.4234 20.7056C17.0261 20.0091 17.5277 19.1366 18.4394 19.1366H26.2929V36.8076L26.2937 36.8068ZM38.5765 20.7048L32.3903 31.6515L29.7062 36.8068V19.1358H37.5597C38.4706 19.1358 38.9738 20.0083 38.5765 20.704V20.7048Z"
-                    fill="white"
-                  />
-                </svg>
-              </div>
-              <h2 className="text-xl font-bold text-white mb-2">{tokenPurchase.buyT4UOnStonfi}</h2>
-              <p className="text-slate-400 text-sm mb-6">
-                { tokenPurchase.exchangeDescription}
-              </p>
+          {/* Right Column - Video */}
+          <div className="bg-slate-900/50 border border-slate-800 rounded-xl p-4 flex flex-col items-center justify-center">
+            <h2 className="text-lg font-semibold mb-4 text-magenta-400">{t.expirationPeriods.tradingNftVisuals}</h2>
+
+            <div className="relative w-full max-w-md aspect-square flex items-center justify-center">
+              <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/20 via-slate-950/50 to-magenta-900/20 rounded-2xl blur-2xl"></div>
+              <video src="/images/4nft-animation.mp4" autoPlay loop muted playsInline className="relative w-full h-full object-contain rounded-xl" />
             </div>
 
-            <a
-              href="https://app.ston.fi/swap?ft=TON&tt=T4U&chartVisible=true&chartInterval=1m&fa=%2219%22"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full max-w-xs bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/25"
-            >
-              <span>{ tokenPurchase.openStonfi}</span>
-              <ExternalLink className="w-4 h-4" />
-            </a>
-
-            <div className="mt-6 grid grid-cols-2 gap-4 w-full max-w-xs">
-              <div className="bg-slate-800/50 rounded-lg p-3 text-center">
-                <div className="text-xs text-slate-400 mb-1">{tokenPurchase.pair}</div>
-                <div className="text-sm font-semibold text-white">TON → T4U</div>
-              </div>
-              <div className="bg-slate-800/50 rounded-lg p-3 text-center">
-                <div className="text-xs text-slate-400 mb-1">{ tokenPurchase.network}</div>
-                <div className="text-sm font-semibold text-white">TON</div>
-              </div>
-            </div>
+            <p className="text-xs text-slate-400 text-center mt-4">{t.expirationPeriods.experienceSeamless}</p>
           </div>
         </div>
 
-        {/* Summary Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-          <div className="bg-gradient-to-br from-cyan-500/10 to-blue-500/10 border border-cyan-500/30 rounded-lg p-4">
-            <div className="text-xs text-cyan-400 mb-1 font-medium">{ tokenPurchase.exchange}</div>
-            <div className="text-lg font-bold text-white">STON.fi DEX</div>
+        {/* Bottom Metrics */}
+        <div className="grid md:grid-cols-3 gap-4 mt-8">
+          <div className="bg-slate-900/50 border border-slate-800 rounded-lg p-4">
+            <div className="text-cyan-400 text-xl font-bold mb-1">12</div>
+            <p className="text-xs text-slate-400">{t.expirationPeriods.availablePeriods}</p>
           </div>
-          <div className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 border border-green-500/30 rounded-lg p-4">
-            <div className="text-xs text-green-400 mb-1 font-medium">{ tokenPurchase.tokenStatus}</div>
-            <div className="text-lg font-bold text-white flex items-center gap-2">
-              { tokenPurchase.verified} <CheckCircle2 className="w-4 h-4 text-green-400" />
-            </div>
+          <div className="bg-slate-900/50 border border-slate-800 rounded-lg p-4">
+            <div className="text-magenta-400 text-xl font-bold mb-1">2.5min - 1mo</div>
+            <p className="text-xs text-slate-400">{t.expirationPeriods.periodRange}</p>
           </div>
-          <div className="bg-gradient-to-br from-purple-500/10 to-violet-500/10 border border-purple-500/30 rounded-lg p-4">
-            <div className="text-xs text-purple-400 mb-1 font-medium">{ tokenPurchase.access}</div>
-            <div className="text-lg font-bold text-white">{ tokenPurchase.inAppLink}</div>
+          <div className="bg-slate-900/50 border border-slate-800 rounded-lg p-4">
+            <div className="text-cyan-400 text-xl font-bold mb-1">0% - 3.0%</div>
+            <p className="text-xs text-slate-400">{t.expirationPeriods.spreadRange}</p>
           </div>
         </div>
       </div>
     </div>
   )
 }
-
-export default TokenPurchase

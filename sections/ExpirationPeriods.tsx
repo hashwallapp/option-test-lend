@@ -1,22 +1,50 @@
 "use client"
  
 import { FC } from "react"
+import { ArrowLeft, Clock } from "lucide-react"
+import { useRouter } from "next/navigation"
 import { Translations } from "@/constants/translations"
 
 interface ExpirationPeriodsProps {
   translations: Translations
+  setCurrentView?: (view: string) => void
 }
 
-export default function ExpirationPeriods({ translations: t }: ExpirationPeriodsProps) {
+export default function ExpirationPeriods({ translations: t, setCurrentView }: ExpirationPeriodsProps) {
+  const router = useRouter()
+
+  const handleBack = () => {
+    if (setCurrentView) {
+      setCurrentView("home")
+    } else {
+      router.back()
+    }
+  }
+
   return (
-    <div className="px-6 lg:px-12 py-6">
-      <div className="max-w-6xl mx-auto">
+    <div className="min-h-screen bg-[#0a0a0f]">
+      <div className="max-w-6xl mx-auto px-4 py-8">
+        
+        {/* Navigation */}
+        <button
+          onClick={handleBack}
+          className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors mb-6"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          {t.common.backToHome}
+        </button>
+
+        {/* Header */}
         <div className="mb-6">
-          <h1 className="text-3xl font-bold mb-2">{t.expirationPeriods.title}</h1>
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent mb-2">
+            {t.expirationPeriods.title}
+          </h1>
           <p className="text-slate-400 text-sm">{t.expirationPeriods.subtitle}</p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-6">
+        {/* Main Content Grid */}
+        <div className="grid lg:grid-cols-2 gap-8">
+          {/* Left Column - Table */}
           <div className="bg-slate-900/50 border border-slate-800 rounded-xl p-4">
             <h2 className="text-lg font-semibold mb-4 text-cyan-400">{t.expirationPeriods.periodsAndSpreads}</h2>
 
@@ -59,6 +87,7 @@ export default function ExpirationPeriods({ translations: t }: ExpirationPeriods
             </div>
           </div>
 
+          {/* Right Column - Video */}
           <div className="bg-slate-900/50 border border-slate-800 rounded-xl p-4 flex flex-col items-center justify-center">
             <h2 className="text-lg font-semibold mb-4 text-magenta-400">{t.expirationPeriods.tradingNftVisuals}</h2>
 
@@ -71,7 +100,8 @@ export default function ExpirationPeriods({ translations: t }: ExpirationPeriods
           </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-4 mt-6">
+        {/* Bottom Metrics */}
+        <div className="grid md:grid-cols-3 gap-4 mt-8">
           <div className="bg-slate-900/50 border border-slate-800 rounded-lg p-4">
             <div className="text-cyan-400 text-xl font-bold mb-1">12</div>
             <p className="text-xs text-slate-400">{t.expirationPeriods.availablePeriods}</p>

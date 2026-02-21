@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowLeft, MessageSquare, PlayCircle } from "lucide-react"
+import { ArrowLeft, MessageSquare, PlayCircle, HelpCircle, CheckCircle2 } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { FC } from "react"
 import { Translations } from "@/constants/translations"
@@ -12,99 +12,50 @@ interface OpenTradeViewProps {
 const OpenTradeView: FC<OpenTradeViewProps> = ({ translations: t }) => {
   const router = useRouter()
   
-  // Use the detailed version which has all the properties your component needs
   const openTradeData = t.openTradeViewDetailed || t.openTradeView
-  
+  const shared = t.loginToPlatformDetailed || t.loginToPlatform
+
   return (
-    <div className="px-6 lg:px-12 py-6">
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
+    <div className="min-h-screen bg-[#0a0a0f] text-slate-300">
+      <div className="max-w-6xl mx-auto px-4 py-8">
+        {/* Navigation */}
         <button
-          onClick={() => {
-            router.back()
-          }}
-          className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors mb-4"
+          onClick={() => router.back()}
+          className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors mb-6"
         >
           <ArrowLeft className="w-4 h-4" />
           {t.common.backToHome}
         </button>
 
-        <div className="mb-6">
-          <h1 className="text-3xl lg:text-4xl font-bold mb-2">
-            <span className="bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
+        {/* Header */}
+        <div className="mb-8">
+          <div className="flex items-center gap-3 mb-2">
+            <HelpCircle className="w-8 h-8 text-cyan-400" />
+            <h1 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
               {openTradeData.title}
-            </span>
-          </h1>
-          <p className="text-slate-400 text-sm max-w-2xl">
+            </h1>
+          </div>
+          <p className="text-slate-400 text-base max-w-2xl">
             {openTradeData.subtitle}
           </p>
         </div>
 
-        {/* Main Content Grid */}
-        <div className="grid lg:grid-cols-2 gap-6">
-          {/* Left Column - Trading Steps */}
+        {/* Main Content Grid - Steps in 2 columns to fill space */}
+        <div className="grid lg:grid-cols-2 gap-6 mb-8">
+          
+          {/* Left Side: Steps 1-4 */}
           <div className="space-y-4">
             {[
-               {
-                 step: 1,
-                 title: openTradeData.prerequisitesTitle,
-                 desc: openTradeData.prerequisitesDescription,
-                 color: "cyan",
-               },
-               {
-                 step: 2,
-                 title: openTradeData.selectTradingPair,
-                 desc: openTradeData.selectTradingPairDescription,
-                 color: "cyan",
-               },
-               {
-                 step: 3,
-                 title: openTradeData.setTransactionParameters,
-                 desc: openTradeData.setTransactionParametersDescription,
-                 color: "cyan",
-               },
-               {
-                 step: 4,
-                 title: openTradeData.configureSlippage,
-                 desc: openTradeData.configureSlippageDescription,
-                 color: "magenta",
-               },
-               {
-                 step: 5,
-                 title: openTradeData.chooseDirection,
-                 desc: openTradeData.chooseDirectionDescription,
-                 color: "magenta",
-               },
-               {
-                 step: 6,
-                 title: openTradeData.sendTransaction,
-                 desc: openTradeData.sendTransactionDescription,
-                 color: "amber",
-               },
-               {
-                 step: 7,
-                 title: openTradeData.trackYourTrade,
-                 desc: openTradeData.trackYourTradeDescription,
-                 color: "green",
-               },
+               { step: 1, title: openTradeData.prerequisitesTitle, desc: openTradeData.prerequisitesDescription, color: "text-cyan-400" },
+               { step: 2, title: openTradeData.selectTradingPair, desc: openTradeData.selectTradingPairDescription, color: "text-cyan-400" },
+               { step: 3, title: openTradeData.setTransactionParameters, desc: openTradeData.setTransactionParametersDescription, color: "text-cyan-400" },
+               { step: 4, title: openTradeData.configureSlippage, desc: openTradeData.configureSlippageDescription, color: "text-purple-400" },
             ].map((item) => (
-              <div key={item.step} className="bg-slate-900/50 border border-slate-800 rounded-xl p-4">
-                <div className="flex items-start gap-4">
-                  <span
-                    className={`flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold border ${
-                      item.color === "cyan"
-                        ? "bg-cyan-500/20 border-cyan-500/30 text-cyan-400"
-                        : item.color === "magenta"
-                        ? "bg-purple-500/20 border-purple-500/30 text-purple-400"
-                        : item.color === "amber"
-                        ? "bg-amber-500/20 border-amber-500/30 text-amber-400"
-                        : "bg-green-500/20 border-green-500/30 text-green-400"
-                    }`}
-                  >
-                    {item.step}
-                  </span>
+              <div key={item.step} className="bg-slate-900/40 border border-slate-800 rounded-2xl p-5">
+                <div className="flex gap-4">
+                  <span className={`text-sm font-bold ${item.color} mt-1`}>0{item.step}</span>
                   <div>
-                    <h3 className="text-base font-semibold text-slate-200 mb-1">{item.title}</h3>
+                    <h3 className="text-white font-semibold mb-2">{item.title}</h3>
                     <p className="text-sm text-slate-400 leading-relaxed">{item.desc}</p>
                   </div>
                 </div>
@@ -112,90 +63,82 @@ const OpenTradeView: FC<OpenTradeViewProps> = ({ translations: t }) => {
             ))}
           </div>
 
-          {/* Right Column - Video & Resources */}
-          <div className="space-y-4">
-            {/* YouTube Video */}
-            <div className="bg-slate-900/50 border border-slate-800 rounded-xl p-5">
-              <h3 className="text-base font-semibold text-purple-400 mb-3 flex items-center gap-2">
-                <PlayCircle className="w-5 h-5" />
+          {/* Right Side: Steps 5-7 + Action Cards */}
+          <div className="space-y-6">
+            <div className="space-y-4">
+               {[
+                  { step: 5, title: openTradeData.chooseDirection, desc: openTradeData.chooseDirectionDescription, color: "text-purple-400" },
+                  { step: 6, title: openTradeData.sendTransaction, desc: openTradeData.sendTransactionDescription, color: "text-amber-400" },
+                  { step: 7, title: openTradeData.trackYourTrade, desc: openTradeData.trackYourTradeDescription, color: "text-emerald-400" },
+               ].map((item) => (
+                <div key={item.step} className="bg-slate-900/40 border border-slate-800 rounded-2xl p-5">
+                  <div className="flex gap-4">
+                    <span className={`text-sm font-bold ${item.color} mt-1`}>0{item.step}</span>
+                    <div>
+                      <h3 className="text-white font-semibold mb-2">{item.title}</h3>
+                      <p className="text-sm text-slate-400 leading-relaxed">{item.desc}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Video Instruction - Compact Style */}
+            <div className="bg-gradient-to-b from-slate-900/60 to-slate-950/60 border border-slate-800 rounded-2xl p-6">
+              <h3 className="text-white font-bold mb-3 flex items-center gap-2">
+                <PlayCircle className="w-5 h-5 text-red-500" />
                 {openTradeData.videoInstructionTitle}
               </h3>
-              <p className="text-sm text-slate-300 mb-4 leading-relaxed">
-                {openTradeData.videoInstructionDesc}
-              </p>
+              <p className="text-xs text-slate-400 mb-4">{openTradeData.videoInstructionDesc}</p>
               <a
                 href="https://youtu.be/GIaP_s0rF98"
                 target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-medium py-2.5 px-5 rounded-lg transition-colors text-sm w-full justify-center"
+                className="w-full bg-[#b91c1c] hover:bg-red-700 text-white font-bold py-3 rounded-xl transition-all flex items-center justify-center gap-2 text-sm"
               >
-                {/* Use loginToPlatformDetailed for these shared properties */}
-                {(t.loginToPlatformDetailed || t.loginToPlatform).watchOnYoutube}
+                {shared.watchOnYoutube}
               </a>
-            </div>
-
-            {/* Trade Notifications */}
-            <div className="bg-slate-900/50 border border-slate-800 rounded-xl p-5">
-              <h3 className="text-base font-semibold text-cyan-400 mb-3 flex items-center gap-2">
-                <MessageSquare className="w-5 h-5" />
-                {openTradeData.liveTradeFeed}
-              </h3>
-              <p className="text-sm text-slate-300 mb-4 leading-relaxed">
-                {openTradeData.liveTradeFeedDescription}
-              </p>
-              <a
-                href="https://t.me/t4ulife"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-cyan-500 hover:bg-cyan-600 text-white font-medium py-2.5 px-5 rounded-lg transition-colors text-sm w-full justify-center"
-              >
-                {(t.loginToPlatformDetailed || t.loginToPlatform).joinT4ulife}
-              </a>
-            </div>
-
-            {/* Supported Coins */}
-            <div className="bg-slate-900/50 border border-slate-800 rounded-xl p-5">
-              <h3 className="text-base font-semibold text-slate-300 mb-4">
-                {openTradeData.supportedTradingCoinsTitle}
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                <span className="bg-cyan-500/20 border border-cyan-500/30 text-cyan-400 px-3 py-1 rounded-full text-xs font-medium">
-                  T4U ({(t.loginToPlatformDetailed || t.loginToPlatform).bestRates})
-                </span>
-                <span className="bg-green-500/20 border border-green-500/30 text-green-400 px-3 py-1 rounded-full text-xs font-medium">
-                  USDT
-                </span>
-                <span className="bg-slate-700 border border-slate-600 text-slate-300 px-3 py-1 rounded-full text-xs font-medium">
-                  {(t.loginToPlatformDetailed || t.loginToPlatform).partnerCoins}
-                </span>
-              </div>
             </div>
           </div>
         </div>
 
-        {/* Summary Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
-          <div className="bg-gradient-to-br from-cyan-500/10 to-blue-500/10 border border-cyan-500/30 rounded-lg p-4">
-            <div className="text-xs text-cyan-400 mb-1 font-medium">
-              {(t.loginToPlatformDetailed || t.loginToPlatform).syncTime}
-            </div>
-            <div className="text-lg font-bold text-white">5-10 min</div>
+        {/* Bottom Section: Feed & Coins */}
+        <div className="grid lg:grid-cols-3 gap-6 mb-8">
+           <div className="lg:col-span-2 bg-slate-900/40 border border-slate-800 rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-6">
+              <div>
+                <h3 className="text-white font-semibold mb-2 flex items-center gap-2">
+                  <MessageSquare className="w-5 h-5 text-cyan-400" />
+                  {openTradeData.liveTradeFeed}
+                </h3>
+                <p className="text-sm text-slate-400">{openTradeData.liveTradeFeedDescription}</p>
+              </div>
+              <a href="https://t.me/t4ulife" target="_blank" className="whitespace-nowrap bg-cyan-500 hover:bg-cyan-400 text-black font-bold py-3 px-8 rounded-xl transition-all text-sm">
+                {shared.joinT4ulife}
+              </a>
+           </div>
+
+           <div className="bg-slate-900/40 border border-slate-800 rounded-2xl p-6">
+              <h3 className="text-white font-semibold mb-4 text-sm">{openTradeData.supportedTradingCoinsTitle}</h3>
+              <div className="flex flex-wrap gap-2">
+                <span className="bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 px-3 py-1 rounded-lg text-[10px] font-bold uppercase">{shared.t4uToken}</span>
+                <span className="bg-green-500/10 border border-green-500/20 text-green-400 px-3 py-1 rounded-lg text-[10px] font-bold uppercase">USDT</span>
+                <span className="bg-slate-800 border border-slate-700 text-slate-400 px-3 py-1 rounded-lg text-[10px] font-bold uppercase">{shared.partnerCoins}</span>
+              </div>
+           </div>
+        </div>
+
+        {/* Footer Metrics */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="bg-slate-900/40 border border-slate-800 p-5 rounded-2xl">
+            <p className="text-xs text-cyan-400 font-semibold uppercase mb-1">{shared.syncTime}</p>
+            <p className="text-lg font-bold text-white">5-10 min</p>
           </div>
-          <div className="bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/30 rounded-lg p-4">
-            <div className="text-xs text-purple-400 mb-1 font-medium">
-              {(t.loginToPlatformDetailed || t.loginToPlatform).defaultReferral}
-            </div>
-            <div className="text-lg font-bold text-white font-mono">
-              {(t.loginToPlatformDetailed || t.loginToPlatform).defaultCodeValue}
-            </div>
+          <div className="bg-slate-900/40 border border-slate-800 p-5 rounded-2xl">
+            <p className="text-xs text-purple-400 font-semibold uppercase mb-1">{shared.defaultReferral}</p>
+            <p className="text-lg font-bold text-white font-mono">{shared.defaultCodeValue}</p>
           </div>
-          <div className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 border border-green-500/30 rounded-lg p-4">
-            <div className="text-xs text-green-400 mb-1 font-medium">
-              {(t.loginToPlatformDetailed || t.loginToPlatform).bestTrading}
-            </div>
-            <div className="text-lg font-bold text-white">
-              {(t.loginToPlatformDetailed || t.loginToPlatform).t4uToken}
-            </div>
+          <div className="bg-slate-900/40 border border-slate-800 p-5 rounded-2xl flex items-center justify-center text-cyan-400 font-bold">
+            <CheckCircle2 className="w-4 h-4 mr-2" />
+            {shared.bestTrading}
           </div>
         </div>
       </div>

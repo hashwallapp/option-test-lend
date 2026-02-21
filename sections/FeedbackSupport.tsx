@@ -12,8 +12,16 @@ interface FeedbackSupportProps {
 
 const FeedbackSupport: FC<FeedbackSupportProps> = ({ translations: t }) => { const router = useRouter()
 
-return ( <div className="min-h-screen bg-[#0a0a0f]"> <div className="max-w-6xl mx-auto px-4 py-8"> {/* Navigation */} <button onClick={() => router.back()} className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors mb-6" > <ArrowLeft className="w-4 h-4" /> 
- {t.common.backToHome} </button>
+return ( 
+<div className="min-h-screen bg-[#0a0a0f]"> 
+  <div className="max-w-6xl mx-auto px-4 py-8"> {/* Navigation */} 
+  
+    <button onClick={() => router.back()} 
+          className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors mb-6" >
+       <ArrowLeft className="w-4 h-4" /> 
+       {t.common.backToHome} 
+    </button>
+
 {/* Header */}
     <div className="mb-8">
       <div className="flex items-center gap-3 mb-2">

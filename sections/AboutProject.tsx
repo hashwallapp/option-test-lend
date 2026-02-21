@@ -98,14 +98,14 @@ const AboutProject: FC<AboutProjectProps> = ({ translations: t }) => {
           className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors mb-6"
         >
           <ArrowLeft className="w-4 h-4" />
-          <span className="text-sm">{t.common.backToHome}</span>
+          <span className="">{t.common.backToHome}</span>
         </button>
 
         {/* Hero Section */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-2">
             <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-2">
-              <LayoutDashboard className="w-8 h-8 text-cyan-400" />
+              <LayoutDashboard className="w-6 h-6 text-cyan-400" />
             </div>
             <h1 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
               {t.aboutProject.productOverview}

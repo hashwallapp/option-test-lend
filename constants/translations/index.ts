@@ -486,6 +486,7 @@ export const translations = {
       tonkeeper: "Tonkeeper",
       tonkeeperDescription: "Most popular TON wallet with a clean interface",
       wallet: "Wallet",
+      tgWalletDescription: "Telegram's native wallet for seamless integration",
       mytonwallet: "MyTonWallet",
       mytonwalletDescription: "Web-based wallet with advanced features",
       quickSetupGuide: "Quick Setup Guide",
