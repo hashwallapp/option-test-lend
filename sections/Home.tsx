@@ -144,9 +144,9 @@ const renderTitle = () => {
                     <h3 className="text-2xl font-bold mb-3">{s.title}</h3>
                     <p className="text-base opacity-90 leading-relaxed">{s.text}</p>
                   </div>
-                  <div className="w-24 h-24 md:w-32 md:h-32 bg-slate-800/80 rounded-full flex items-center justify-center text-lg font-bold text-slate-500 border border-slate-700">
+                  {/* <div className="w-24 h-24 md:w-32 md:h-32 bg-slate-800/80 rounded-full flex items-center justify-center text-lg font-bold text-slate-500 border border-slate-700">
                     {i + 1}/{slides.length}
-                  </div>
+                  </div> */}
                 </div>
               ))}
             </div>
