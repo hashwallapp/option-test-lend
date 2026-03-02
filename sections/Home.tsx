@@ -10,7 +10,7 @@ interface HomeProps {
 }
 
   const handleWebVersion = () => {
-    window.open("https://trade.ton4u.app", "_blank")
+    window.open("https://trade.ton4u.app/?n=DIRTYTRADER", "_blank")
   }
 
   const handleTelegramApp = () => {

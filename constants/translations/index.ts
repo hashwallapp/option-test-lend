@@ -842,7 +842,7 @@ export const translations = {
       instructions: "Инструкции",
       walletCreation: "Создание кошелька",
       purchaseTokens: "Покупка токенов",
-      loginLink: "Вход в платформу",
+      loginToPlatform: "Вход в платформу",
       openTrade: "Открыть сделку",
       addToPool: "Добавить в пул",
       trading: "Торговля",
