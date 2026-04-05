@@ -1,6 +1,6 @@
 "use client"
 import Link from "next/link"
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import { Menu, X, ChevronDown } from "lucide-react"
 import GlobeSvg from "@/components/icons/GlobeSvg"
 import { usePathname, useRouter } from "next/navigation"
@@ -95,6 +95,17 @@ const switchLanguage = (newLang: 'en' | 'ru') => {
     setOpenDropdown(null)
   }
 
+  useEffect(() => {
+  if (mobileMenuOpen) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = 'unset';
+  }
+  return () => {
+    document.body.style.overflow = 'unset';
+  };
+}, [mobileMenuOpen]);
+
   return (
     <>
       <header className="sticky top-0 z-50 w-full border-b border-slate-800/50 bg-slate-950/80 backdrop-blur-md">
@@ -157,9 +168,10 @@ const switchLanguage = (newLang: 'en' | 'ru') => {
         </nav>
       </header>
 
-      {mobileMenuOpen && (
-        <div className="md:hidden bg-slate-900 border-b border-slate-800 fixed left-0 right-0 top-[80px] h-screen z-40 overflow-y-auto">
-          <div className="flex flex-col p-6 gap-4">
+    {mobileMenuOpen && (
+  <div className="md:hidden bg-slate-900 fixed inset-0 top-[80px] z-[100] overflow-y-auto overscroll-contain">
+    <div className="flex flex-col p-6 gap-4 min-h-full pb-20"> 
+      {/* Добавил min-h-full и pb-20 для корректного скролла внутри */}
             <div className="flex bg-slate-800/30 border border-slate-700 rounded-lg p-1 gap-2 mb-4">
               <button onClick={() => switchLanguage("en")} className={`flex-1 px-3 py-1 text-xs ${language === "en" ? "text-cyan-400" : "text-slate-400"}`}>EN</button>
               <button onClick={() => switchLanguage("ru")} className={`flex-1 px-3 py-1 text-xs ${language === "ru" ? "text-cyan-400" : "text-slate-400"}`}>RU</button>
@@ -178,10 +190,10 @@ const switchLanguage = (newLang: 'en' | 'ru') => {
               </div>
             ))}
 
-            <Link href={l("/wallet-creation")} className="w-full mt-4 inline-flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-500 to-cyan-600 text-white font-semibold py-3 rounded-lg" onClick={closeMenus}>
+           {/*  <Link href={l("/wallet-creation")} className="w-full mt-4 inline-flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-500 to-cyan-600 text-white font-semibold py-3 rounded-lg" onClick={closeMenus}>
               <GlobeSvg />
               {t.common.startTrading}
-            </Link>
+            </Link> */}
           </div>
         </div>
       )}
